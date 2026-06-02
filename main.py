@@ -11,17 +11,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 app = FastAPI()
 
-# Configuración de variables (idealmente cargadas desde el servidor)
-USUARIO_SAP = os.getenv("USUARIO_SAP", "tu_usuario_o_correo@claro.com")
-PASSWORD_SAP = os.getenv("PASSWORD_SAP", "TuContrasenaSegura123")
+# La URL del Webhook se mantiene fija para saber a dónde devolver los datos
 URL_WEBHOOK_BASE44 = os.getenv("URL_WEBHOOK_BASE44", "https://base44.com")
 
 COLUMNAS_SAP = ["Material", "Serial", "Texto", "Centro", "Almacen", "Movimiento", "Mov_texto", "Modelo", "Origen", "Precio", "Dias_Antiguedad", "Semaforo", "Fecha_Antiguedad", "Nro_Pedido"]
 COLUMNAS_RELEVANTES = {"Material", "Serial", "Texto", "Centro", "Precio", "Dias_Antiguedad", "Semaforo", "Fecha_Antiguedad", "Nro_Pedido"}
 
+# ==========================================
+# MODIFICACIÓN 1: El molde del paquete JSON
+# ==========================================
 class ConsultaRequest(BaseModel):
     rango_inicio: str
     rango_fin: str
+    usuario_sap: str    # <-- Ahora Base44 debe enviar esto
+    password_sap: str   # <-- Ahora Base44 debe enviar esto
 
 def extraer_datos_tabla(driver):
     xpath_tabla = "//table[contains(@class, 'sapUiTableCtrl')]//tbody | //table[contains(@class, 'sapMListTbl')]//tbody"
@@ -40,8 +43,10 @@ def extraer_datos_tabla(driver):
     except:
         return []
 
-def tarea_bot_sap(rango_inicio: str, rango_fin: str):
-    # CONFIGURACIÓN CRUCIAL PARA CORRER EN LA NUBE (SIN PANTALLA)
+# ==========================================
+# MODIFICACIÓN 2: Uso de datos dinámicos
+# ==========================================
+def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_sap: str):
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -55,11 +60,13 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str):
     try:
         driver.get("https://ondemand.com")
 
-        # Login
+        # Login usando las variables que viajan desde Base44
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"]/span'))).click()
         campo_usuario = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]')))
-        campo_usuario.send_keys(USUARIO_SAP)
-        driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(PASSWORD_SAP)
+        
+        campo_usuario.send_keys(usuario_sap)  # <-- Cambiado
+        driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(password_sap)  # <-- Cambiado
+        
         driver.find_element(By.ID, "logOnFormSubmit").click()
 
         # Navegación
@@ -96,7 +103,7 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str):
         time.sleep(12)
         registros_transito = extraer_datos_tabla(driver)
 
-        # Envío a Base44
+        # Envío de vuelta a Base44
         payload = {
             "metadata": {"rango": f"{rango_inicio}-{rango_fin}"},
             "stock_actual": registros_stock_actual,
@@ -109,8 +116,11 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str):
     finally:
         driver.quit()
 
+# ==========================================
+# MODIFICACIÓN 3: Pasar parámetros a la tarea
+# ==========================================
 @app.post("/ejecutar-bot")
 def ejecutar_bot(datos: ConsultaRequest, background_tasks: BackgroundTasks):
-    # Ejecuta el bot en segundo plano para que la API responda "Ok" de inmediato a Base44 sin trabar la web
-    background_tasks.add_task(tarea_bot_sap, datos.rango_inicio, datos.rango_fin)
+    # Despacha las credenciales y rangos hacia el bot en segundo plano
+    background_tasks.add_task(tarea_bot_sap, datos.rango_inicio, datos.rango_fin, datos.usuario_sap, datos.password_sap)
     return {"status": "Proceso de actualización iniciado en la nube"}
