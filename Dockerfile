@@ -8,7 +8,6 @@ USER root
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -16,11 +15,11 @@ WORKDIR /app
 # Copiamos tus archivos del repositorio al contenedor
 COPY . .
 
-# Instalamos tus librerías de Python (FastAPI, requests, pydantic, etc.)
-RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
+# Forzamos la instalación de las librerías omitiendo restricciones del sistema
+RUN python3 -m pip install --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt --break-system-packages
 
 # Exponer el puerto estándar requerido por Render
 EXPOSE 8080
 
 # Comando para encender el servidor de tu API con FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["python3", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
