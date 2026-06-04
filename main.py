@@ -149,7 +149,9 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
         print("¡Sincronización con Supabase completada con éxito!")
 
     except Exception as e:
-        print(f"Error en segundo plano: {e}")
+    import traceback
+    print("¡Se detectó un fallo en la navegación de SAP!")
+    traceback.print_exc()  # <-- Esta es la línea clave
     finally:
         driver.quit()
 
