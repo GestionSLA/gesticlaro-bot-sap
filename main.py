@@ -148,17 +148,16 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
             subir_a_supabase(registros_transito, "Stock en Tránsito")
         print("¡Sincronización con Supabase completada con éxito!")
 
-    except Exception as e:
-    import traceback
-    print("¡Se detectó un fallo en la navegación de SAP!")
-    traceback.print_exc()  # <-- Esta es la línea clave
+        except Exception as e:
+        import traceback
+        print("¡Se detectó un fallo en la navegación de SAP!")
+        traceback.print_exc()
     finally:
         driver.quit()
 
 @app.post("/ejecutar-bot")
 def ejecutar_bot(datos: ConsultaRequest):
     try:
-        # Forzamos al bot a ejecutarse en vivo y en directo
         tarea_bot_sap(datos.rango_inicio, datos.rango_fin, datos.usuario_sap, datos.password_sap)
         return {"status": "Sincronización completada"}
     except Exception as e:
