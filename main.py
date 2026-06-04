@@ -1,8 +1,8 @@
 import os
 import time
 import requests
-from fastapi import FastAPI, BackgroundTasks
-from fastapi.middleware.cors import CORSMiddleware  # <-- NUEVA LÍNEA
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 app = FastAPI()
 
-# NUEVO BLOQUE: Habilitar permisos CORS universales para que Base44 hable con Render
+# Permisos CORS para comunicación abierta con Base44
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# CONFIGURACIÓN DE SUPABASE (Se mantiene igual abajo...)
+# CONFIGURACIÓN DE SUPABASE (Se carga desde el entorno seguro de Render)
 SUPABASE_URL = os.getenv("SUPABASE_URL", "tu_url_de_supabase")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY", "tu_api_key_de_supabase")
 SUPABASE_TABLE = "inventario_sap"
@@ -53,11 +53,8 @@ def subir_a_supabase(registros, categoria):
         "Content-Type": "application/json",
         "Prefer": "return=minimal"
     }
-    
-    # Aseguramos el nombre exacto de la columna en Supabase (toda en minúsculas)
     for reg in registros:
         reg["Categoria"] = categoria
-        
     requests.post(url, headers=headers, json=registros)
 
 def extraer_datos_tabla(driver):
@@ -67,11 +64,9 @@ def extraer_datos_tabla(driver):
         filas = tabla_body.find_elements(By.TAG_NAME, "tr")
         resultados = []
         for fila in filas:
-            celdas = fila.find_elements(By.TAG_NAME, "tr" if "sapUiTableCtrl" in xpath_tabla else "td")
-            # Si SAP usa celdas estándar td o divs internos, extraemos su texto
-            celdas_datos = fila.find_elements(By.TAG_NAME, "td") if not celdas else celdas
-            if celdas_datos:
-                valores = [celda.text.strip() for celda in celdas_datos]
+            celdas = fila.find_elements(By.TAG_NAME, "td")
+            if celdas:
+                valores = [celda.text.strip() for celda in celdas]
                 if len(valores) >= len(COLUMNAS_SAP):
                     registro = {COLUMNAS_SAP[i]: valores[i] for i in range(len(COLUMNAS_SAP)) if COLUMNAS_SAP[i] in COLUMNAS_RELEVANTES}
                     resultados.append(registro)
@@ -91,24 +86,26 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
     registros_transito = []
 
     try:
-        # URL REAL Y COMPLETA CORREGIDA DE SAP CLARO AGENTES
-        driver.get("https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display")
+        print("Iniciando simulación del navegador... Abriendo SAP Fiori Claro")
+        driver.get("https://ondemand.com")
 
-        # Login
+        print("Paso 0: Desplegando login corporativo...")
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"]/span'))).click()
+        
+        print("Paso 1: Escribiendo credenciales e ingresando...")
         campo_usuario = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]')))
         campo_usuario.send_keys(usuario_sap)
         driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(password_sap)
         driver.find_element(By.ID, "logOnFormSubmit").click()
 
-        # Navegación
+        print("Paso 2: Navegando por el menú de aplicaciones...")
         WebDriverWait(driver, 25).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="btnApplicaciones-BDI-content"]'))).click()
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__tile3-focus"]'))).click()
 
         xpath_btn_consultar = '//*[@id="__xmlview8--button2-BDI-content"]'
         xpath_reabrir_filtros = '//*[@id="__xmlview4--panelSel-CollapsedImg-img"]'
 
-        # --- PASO 1: Stock Disponible ---
+        print("Paso 3: Consultando Stock Disponible Principal...")
         campo_inicio = WebDriverWait(driver, 25).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__xmlview8--input0"]')))
         campo_inicio.clear()
         campo_inicio.send_keys(rango_inicio)
@@ -118,7 +115,7 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
         time.sleep(12)
         registros_stock_actual.extend(extraer_datos_tabla(driver))
 
-        # --- PASO 2: Depósito de Reingreso ---
+        print("Paso 4: Reabriendo filtros para Depósito de Reingreso...")
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath_reabrir_filtros))).click()
         time.sleep(1)
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__xmlview11--rdb5-Button"]'))).click()
@@ -126,7 +123,7 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
         time.sleep(12)
         registros_stock_actual.extend(extraer_datos_tabla(driver))
 
-        # --- PASO 3: Stock en Tránsito ---
+        print("Paso 5: Reabriendo filtros para Stock en Tránsito...")
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, xpath_reabrir_filtros))).click()
         time.sleep(1)
         WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__xmlview4--rdb4"]/div/svg/circle'))).click()
@@ -135,30 +132,22 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
         time.sleep(12)
         registros_transito = extraer_datos_tabla(driver)
 
-        # --- ENVÍO DE DATOS A SUPABASE ---
-        print("Limpiando registros antiguos de Supabase...")
+        print("Paso 6: Conectando a Supabase para actualizar datos...")
         limpiar_supabase_viejo()
-        
-        print("Subiendo nuevo Stock Actual...")
         if registros_stock_actual:
             subir_a_supabase(registros_stock_actual, "Stock actual")
-            
-        print("Subiendo nuevo Stock en Tránsito...")
         if registros_transito:
             subir_a_supabase(registros_transito, "Stock en Tránsito")
-        print("¡Sincronización con Supabase completada con éxito!")
+        print("Sincronización completada de forma exitosa.")
 
-        except Exception as e:
+    except Exception as e:
         import traceback
-        print("¡Se detectó un fallo en la navegación de SAP!")
+        print("¡Se detectó un fallo crítico en la navegación de SAP!")
         traceback.print_exc()
     finally:
         driver.quit()
 
 @app.post("/ejecutar-bot")
 def ejecutar_bot(datos: ConsultaRequest):
-    try:
-        tarea_bot_sap(datos.rango_inicio, datos.rango_fin, datos.usuario_sap, datos.password_sap)
-        return {"status": "Sincronización completada"}
-    except Exception as e:
-        return {"status": "Error en la ejecución", "error": str(e)}
+    tarea_bot_sap(datos.rango_inicio, datos.rango_fin, datos.usuario_sap, datos.password_sap)
+    return {"status": "Proceso ejecutado"}
