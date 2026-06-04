@@ -94,8 +94,8 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
         
         print("Paso 1: Escribiendo credenciales e ingresando...")
         campo_usuario = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]')))
-        campo_usuario.send_keys(usuario_sap)
-        driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(password_sap)
+        campo_usuario.send_keys(SinUs)
+        driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(SinPass)
         driver.find_element(By.ID, "logOnFormSubmit").click()
 
         print("Paso 2: Navegando por el menú de aplicaciones...")
