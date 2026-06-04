@@ -36,16 +36,11 @@ class ConsultaRequest(BaseModel):
     password_sap: str
 
 def limpiar_supabase_viejo():
-    """Borra todos los registros actuales de la tabla en Supabase"""
     url = f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}"
-    headers = {
-        "Authorization": f"Bearer {SUPABASE_KEY}",
-        "apikey": SUPABASE_KEY
-    }
+    headers = {"Authorization": f"Bearer {SUPABASE_KEY}", "apikey": SUPABASE_KEY}
     requests.delete(url, headers=headers, params={"id": "neq.0"})
 
 def subir_a_supabase(registros, categoria):
-    """Sube los registros estructurados directamente a Supabase"""
     url = f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}"
     headers = {
         "Authorization": f"Bearer {SUPABASE_KEY}",
@@ -88,15 +83,43 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario_sap: str, password_
     try:
         print("Iniciando simulación del navegador... Abriendo SAP Fiori Claro")
         driver.get("https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display")
+        time.sleep(5) # Pausa estratégica para carga internacional de red
 
-        print("Paso 0: Desplegando login corporativo...")
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"]/span'))).click()
-        
+        print("Paso 0: Verificando si requiere desplegar login corporativo...")
+        try:
+            boton_desplegar = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"]/span'))
+            )
+            boton_desplegar.click()
+            print("-> Botón superior encontrado y presionado.")
+            time.sleep(3)
+        except:
+            print("-> El botón superior no está visible. Buscando formulario directamente...")
+
+        # --- ESCUDO CONTRA IFRAMES EN EL LOGIN ---
+        print("Buscando si el formulario está dentro de un iframe...")
+        iframes = driver.find_elements(By.TAG_NAME, "iframe")
+        if len(iframes) > 0:
+            print(f"-> Se detectaron {len(iframes)} iframes. Saltando al iframe del formulario...")
+            driver.switch_to.frame(0) # Se mete al primer iframe disponible
+
         print("Paso 1: Escribiendo credenciales e ingresando...")
-        campo_usuario = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]')))
+        campo_usuario = WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]'))
+        )
+        campo_usuario.clear()
         campo_usuario.send_keys(SinUs)
-        driver.find_element(By.XPATH, '//*[@id="j_password"]').send_keys(SinPass)
+        
+        campo_password = driver.find_element(By.XPATH, '//*[@id="j_password"]')
+        campo_password.clear()
+        campo_password.send_keys(SinPass)
+        
         driver.find_element(By.ID, "logOnFormSubmit").click()
+        print("-> Credenciales enviadas con éxito.")
+        
+        # Volver al contenido principal de la página tras loguearse
+        driver.switch_to.default_content()
+        time.sleep(8)
 
         print("Paso 2: Navegando por el menú de aplicaciones...")
         WebDriverWait(driver, 25).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="btnApplicaciones-BDI-content"]'))).click()
