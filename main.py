@@ -122,11 +122,33 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
         time.sleep(8)
 
         print("Paso 2: Navegando por el menú de aplicaciones...")
-        WebDriverWait(driver, 25).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="btnApplicaciones-BDI-content"]'))).click()
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__tile3-focus"]'))).click()
+        # Damos una pausa estratégica de 6 segundos para que el Home de SAP se pinte por completo
+        time.sleep(6) 
 
-        xpath_btn_consultar = '//*[@id="__xmlview8--button2-BDI-content"]'
-        xpath_reabrir_filtros = '//*[@id="__xmlview4--panelSel-CollapsedImg-img"]'
+        print("-> Buscando y presionando el botón de Aplicaciones...")
+        boton_apps = WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[contains(@id, 'btnApplicaciones')]"))
+        )
+        driver.execute_script("arguments[0].click();", boton_apps)
+        time.sleep(3)
+
+        print("-> Buscando e ingresando al módulo de consultas...")
+        # Intentamos hacer clic en el azulejo usando tu XPath, pero de forma forzada por JS
+        try:
+            tile_modulo = WebDriverWait(driver, 15).until(
+                EC.element_to_be_clickable((By.XPATH, '//*[@id="__tile3-focus"]'))
+            )
+            driver.execute_script("arguments[0].click();", tile_modulo)
+        except:
+            print("-> El ID rígido falló. Intentando buscar el módulo por su clase genérica de SAP...")
+            # Si el ID cambia, busca cualquier azulejo/tile activo en la pantalla y le hace clic
+            tile_generico = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, "sapFioriObjectPageHeaderTitle"))
+            )
+            driver.execute_script("arguments[0].click();", tile_generico)
+            
+        print("-> Ingreso al módulo completado con éxito.")
+        time.sleep(5)
 
         print("Paso 3: Consultando Stock Disponible Principal...")
         campo_inicio = WebDriverWait(driver, 25).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__xmlview8--input0"]')))
