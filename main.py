@@ -3,6 +3,7 @@ import time
 import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -67,7 +68,6 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario: str, password: str
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    # FORZAMOS UNA RESOLUCIÓN ULTRA-GIGANTE DE ESCRITORIO
     chrome_options.add_argument("--window-size=2560,1600")
     chrome_options.add_argument("--start-maximized")
     
@@ -76,36 +76,34 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario: str, password: str
     registros_transito = []
 
     try:
-                print("Iniciando simulación del navegador... Abriendo SAP Fiori Claro")
+        print("Iniciando simulación del navegador... Abriendo SAP Fiori Claro")
         driver.get("https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#Home-show")
         
-        # --- NUEVA ESPERA AGRESIVA Y PACIENTE ---
         print("-> Dando una pausa fija de 12 segundos para conexiones internacionales lentas...")
         time.sleep(12)
 
         print("Paso 0: Esperando dinámicamente a que aparezca el botón superior de login...")
-        # Selenium vigilará la pantalla hasta un máximo de 25 segundos
         boton_superior = WebDriverWait(driver, 25).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"] | //*[@id="headerLoginButton"]/span'))
         )
         
         print("-> ¡Botón superior detectado! Ejecutando clic forzado...")
-        driver.execute_script("arguments[0].click();", boton_superior)
+        driver.execute_script("arguments.click();", boton_superior)
         print("-> Clic ejecutado con éxito.")
-        time.sleep(5) # Esperamos a que se despliegue el contenedor del formulario
+        time.sleep(5)
 
         print("Paso 1: Escribiendo credenciales e ingresando...")
         campo_usuario = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="j_username"]'))
         )
         
-        driver.execute_script("document.getElementById('j_username').value = arguments[0];", usuario)
-        driver.execute_script("document.getElementById('j_password').value = arguments[0];", password)
+        driver.execute_script("document.getElementById('j_username').value = arguments;", usuario)
+        driver.execute_script("document.getElementById('j_password').value = arguments;", password)
         time.sleep(1)
 
         print("-> Presionando botón de ingreso 'Log On'...")
         boton_submit = driver.find_element(By.ID, "logOnFormSubmit")
-        driver.execute_script("arguments[0].click();", boton_submit)
+        driver.execute_script("arguments.click();", boton_submit)
         print("-> Formulario enviado.")
         time.sleep(8)
 
@@ -113,13 +111,13 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, usuario: str, password: str
         boton_apps = WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//*[contains(@id, 'btnApplicaciones')]"))
         )
-        driver.execute_script("arguments[0].click();", boton_apps)
+        driver.execute_script("arguments.click();", boton_apps)
         time.sleep(3)
 
         tile_modulo = WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="__tile3-focus"]'))
         )
-        driver.execute_script("arguments[0].click();", tile_modulo)
+        driver.execute_script("arguments.click();", tile_modulo)
         time.sleep(5)
 
         xpath_btn_consultar = '//*[@id="__xmlview8--button2-BDI-content"]'
