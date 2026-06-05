@@ -99,26 +99,26 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
 
         print("Paso 1: Escribiendo credenciales e ingresando...")
         # Pausa estratégica para que el formulario dentro del iframe se asiente por completo
-        time.sleep(4)
+        time.sleep(12)
 
         campo_usuario = WebDriverWait(driver, 15).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="j_username"]'))
         )
         # Clic forzado para ganar el foco antes de tipear
         driver.execute_script("arguments[0].click();", campo_usuario)
-        time.sleep(1)
+        time.sleep(4)
         campo_usuario.clear()
         campo_usuario.send_keys(SinUs)
         print("-> Usuario ingresado.")
         
         campo_password = driver.find_element(By.XPATH, '//*[@id="j_password"]')
         driver.execute_script("arguments[0].click();", campo_password)
-        time.sleep(1)
+        time.sleep(4)
         campo_password.clear()
         campo_password.send_keys(SinPass)
         print("-> Contraseña ingresada.")
         
-        time.sleep(2) 
+        time.sleep(8) 
         
         print("-> Presionando botón de ingreso 'Log On'...")
         boton_submit = driver.find_element(By.ID, "logOnFormSubmit")
@@ -126,7 +126,7 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
         print("-> Formulario enviado.")
         
         driver.switch_to.default_content()
-        time.sleep(10)
+        time.sleep(16)
 
         print("Paso 2: Navegando por el menú de aplicaciones...")
         time.sleep(6) 
