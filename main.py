@@ -207,6 +207,11 @@ def ver_error():
     return {"status": "No hay capturas de error guardadas."}
 
 @app.post("/ejecutar-bot")
-def ejecutar_bot(datos: ConsultaRequest):
-    tarea_bot_sap(datos.rango_inicio, datos.rango_fin, datos.SinUs, datos.SinPass)
+def ejecutar_bot(payload: dict):
+    r_inicio = str(payload.get("rango_inicio", ""))
+    r_fin = str(payload.get("rango_fin", ""))
+    usuario = str(payload.get("SinUs", payload.get("sinus", payload.get("Sinus", ""))))
+    password = str(payload.get("SinPass", payload.get("sinpass", payload.get("Sinpass", ""))))
+    
+    tarea_bot_sap(r_inicio, r_fin, usuario, password)
     return {"status": "Proceso ejecutado"}
