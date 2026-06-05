@@ -100,7 +100,7 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
         # ==========================================
         # CÓDIGO DEL PASO 1 CON TUS DOS NUEVOS XPATH
         # ==========================================
-               print("Paso 1: Escribiendo credenciales e ingresando...")
+        print("Paso 1: Escribiendo credenciales e ingresando...")
         # Esperamos a que el formulario exista en pantalla
         WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="j_username"]'))
