@@ -79,35 +79,71 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
     try:
         print("Iniciando simulación del navegador... Abriendo SAP Fiori Claro")
         driver.get("https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display")
+        
+        print("-> Esperando 12 segundos fijos para que la red cargue por completo el botón...")
         time.sleep(12) 
 
-        print("Paso 0: Desplegando formulario de login corporativo...")
+        print("Paso 0: Verificando si requiere desplegar login corporativo...")
         try:
             boton_desplegar = WebDriverWait(driver, 20).until(
                 EC.element_to_be_clickable((By.XPATH, '//*[@id="headerLoginButton"]/span | //*[@id="headerLoginButton"]'))
             )
             boton_desplegar.click()
+            print("-> Botón superior encontrado y presionado con éxito mecánico.")
             time.sleep(4)
         except:
-            print("-> El botón superior no respondió o ya se auto-redireccionó.")
+            print("-> El botón superior no respondió. Intentando buscar formulario directamente...")
 
-        if len(driver.find_elements(By.TAG_NAME, "iframe")) > 0:
+        print("Buscando si el formulario está dentro de un iframe...")
+        iframes = driver.find_elements(By.TAG_NAME, "iframe")
+        if len(iframes) > 0:
+            print(f"-> Se detectaron {len(iframes)} iframes. Saltando al iframe del formulario...")
             driver.switch_to.frame(0)
 
         print("Paso 1: Escribiendo credenciales e ingresando...")
         time.sleep(4)
+
+        # Esperamos a que los campos existan físicamente en el código
         WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, '//*[@id="j_username"]')))
         
-        driver.execute_script(f"document.getElementById('j_username').value = '{SinUs}';")
-        driver.execute_script(f"document.getElementById('j_password').value = '{SinPass}';")
-        time.sleep(2) 
+        print("-> Ejecutando inyección química directa en memoria de SAP...")
+        # Volvemos al método de inyección de ID puro que no requiere clics en máscaras visuales
+        driver.execute_script(f"document.getElementById('j_username').value = '{usuario_final}';")
+        driver.execute_script(f"document.getElementById('j_password').value = '{password_final}';")
+        time.sleep(5) 
         
-        boton_submit = driver.find_element(By.ID, "logOnFormSubmit")
-        driver.execute_script("arguments.click();", boton_submit)
-        print("-> Formulario enviado.")
+        print("-> Presionando boton de ingreso 'Log On'...")
+        # Le damos 5 segundos de cortesía para que el formulario valide los textos inyectados
+        time.sleep(5) 
         
+        try:
+            # Opción A: Intentar por el ID estándar esperando que sea clickeable
+            boton_submit = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "logOnFormSubmit"))
+            )
+            driver.execute_script("arguments[0].click();", boton_submit)
+            print("-> Formulario enviado mediante ID estándar.")
+        except:
+            print("-> ID estándar falló. Intentando buscar por texto visible 'Log On'...")
+            try:
+                # Opción B: Buscar el botón que tenga escrito "Log On" (por el idioma inglés)
+                boton_texto = WebDriverWait(driver, 8).until(
+                    EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Log On')] | //input[@value='Log On']"))
+                )
+                driver.execute_script("arguments[0].click();", boton_texto)
+                print("-> Formulario enviado mediante texto 'Log On'.")
+            except:
+                print("-> Búsqueda por texto falló. Aplicando fuerza bruta por clase genérica de SAP...")
+                # Opción C: Buscar por la clase nativa que agrupa los botones en SAP IAS
+                boton_clase = WebDriverWait(driver, 5).until(
+                    EC.element_to_be_clickable((By.CLASS_NAME, "comSapIdpIdpButtons"))
+                )
+                driver.execute_script("arguments[0].click();", boton_clase)
+                print("-> Formulario enviado mediante clase corporativa.")
+
+        print("-> Esperando procesamiento del Login...")
         driver.switch_to.default_content()
-        time.sleep(10)
+        time.sleep(12) # Damos tiempo amplio para pasar al Home
 
         # ==========================================
         # PASO 2: ATAJO MAESTRO DIRECTO POR URL
