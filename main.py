@@ -98,25 +98,26 @@ def tarea_bot_sap(rango_inicio: str, rango_fin: str, SinUs: str, SinPass: str):
             driver.switch_to.frame(0)
 
         print("Paso 1: Escribiendo credenciales e ingresando...")
-        time.sleep(4)
+        # Esperamos a que el formulario exista en pantalla
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="j_username"]'))
+        )
+        
+        print("-> Inyectando credenciales mediante JavaScript directo...")
+        # Forzamos la inserción de datos directo en el motor de renderizado de SAP
+        driver.execute_script("document.getElementById('j_username').value = arguments[0];", usuario_sap)
+        driver.execute_script("document.getElementById('j_password').value = arguments[0];", password_sap)
+        time.sleep(1)
 
-        # Esperamos a que los campos existan físicamente en el código
-        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, '//*[@id="j_username"]')))
-        
-        print("-> Inyectando credenciales por JS directo...")
-        # Inyección forzada en una sola línea para evitar errores de sangría de Python
-        driver.execute_script(f"var el = document.getElementById('j_username'); if(el) {{ el.value = '{SinUs}'; el.dispatchEvent(new Event('input', {{bubbles:true}})); el.dispatchEvent(new Event('change', {{bubbles:true}})); }}")
-        driver.execute_script(f"var el = document.getElementById('j_password'); if(el) {{ el.value = '{SinPass}'; el.dispatchEvent(new Event('input', {{bubbles:true}})); el.dispatchEvent(new Event('change', {{bubbles:true}})); }}")
-        print("-> Valores inyectados y eventos de cambio disparados.")
-        time.sleep(2) 
-        
-        print("-> Presionando botón de ingreso 'Log On'...")
-        boton_submit = driver.find_element(By.ID, "logOnFormSubmit")
-        driver.execute_script("arguments[0].click();", boton_submit)
-        print("-> Formulario enviado.")
+        print("-> Presionando el botón de ingreso...")
+        boton_enviar = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "logOnFormSubmit"))
+        )
+        driver.execute_script("arguments[0].click();", boton_enviar)
+        print("-> Credenciales enviadas con éxito.")
         
         driver.switch_to.default_content()
-        time.sleep(10)
+        time.sleep(10) # Damos tiempo extra para que procese el login internacional
 
         print("Paso 2: Navegando por el menú de aplicaciones...")
         time.sleep(6) 
