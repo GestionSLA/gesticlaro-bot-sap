@@ -224,7 +224,26 @@ def main():
         if campo_user is None:
             raise Exception("No se encontró el campo 'j_username' en ningún frame de la página")
 
-        campo_pass = driver.find_element(By.ID, "j_password")
+        # El iframe puede estar todavía recargando/re-renderizando su contenido
+        # en el momento en que encontramos el campo por primera vez. Esperamos
+        # y volvemos a buscar referencias "frescas" antes de escribir.
+        log("Esperando estabilización del formulario dentro del iframe...")
+        time.sleep(4)
+        try:
+            ready = driver.execute_script("return document.readyState;")
+            log(f"document.readyState del frame actual: {ready}")
+        except Exception:
+            pass
+
+        campo_user = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "j_username"))
+        )
+        campo_pass = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "j_password"))
+        )
+
+        log(f"Atributos j_username -> disabled={campo_user.get_attribute('disabled')}, readonly={campo_user.get_attribute('readonly')}, type={campo_user.get_attribute('type')}, displayed={campo_user.is_displayed()}, enabled={campo_user.is_enabled()}")
+        log(f"Atributos j_password -> disabled={campo_pass.get_attribute('disabled')}, readonly={campo_pass.get_attribute('readonly')}, type={campo_pass.get_attribute('type')}, displayed={campo_pass.is_displayed()}, enabled={campo_pass.is_enabled()}")
 
         log("Escribiendo usuario y contraseña (carácter por carácter)...")
         campo_user.click()
