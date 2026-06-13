@@ -1,7 +1,7 @@
 {
   "status": "error",
-  "mensaje": "Message: \nStacktrace:\n#0 0x55ea0014f80a <unknown>\n#1 0x55e9ffb32289 <unknown>\n#2 0x55e9ffb869b4 <unknown>\n#3 0x55e9ffb86c01 <unknown>\n#4 0x55e9ffbd1874 <unknown>\n#5 0x55e9ffbcea4c <unknown>\n#6 0x55e9ffb79f7f <unknown>\n#7 0x55e9ffb7ad61 <unknown>\n#8 0x55ea001160f7 <unknown>\n#9 0x55ea001148bd <unknown>\n#10 0x55ea000ff5a6 <unknown>\n#11 0x55ea0011549a <unknown>\n#12 0x55ea000e7560 <unknown>\n#13 0x55ea0013c288 <unknown>\n#14 0x55ea0013c425 <unknown>\n#15 0x55ea0014e38e <unknown>\n#16 0x7f37f889caa4 <unknown>\n#17 0x7f37f8929c6c <unknown>\n",
-  "actualizado": "2026-06-13T13:54:52.151550+00:00",
+  "mensaje": "HTTPConnectionPool(host='localhost', port=47809): Read timed out. (read timeout=120)",
+  "actualizado": "2026-06-13T14:22:59.175270+00:00",
   "cantidad": 0,
   "data": []
 }
