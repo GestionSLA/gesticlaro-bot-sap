@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 
 # ──────────────────────────────────────────────
@@ -152,6 +153,40 @@ def encontrar_campo(driver, by, selector, timeout=15):
     return None
 
 
+def cargar_pagina(driver, url, timeout=180, reintentos=2):
+    """
+    Navega a una URL con timeout extendido. Si la página tarda demasiado
+    en disparar el evento 'load' (común en SPAs pesadas de SAP), detiene
+    la carga con window.stop() y continúa: el DOM suele estar usable
+    igual aunque la página "siga cargando" recursos secundarios.
+    """
+    driver.set_page_load_timeout(timeout)
+    for intento in range(1, reintentos + 1):
+        try:
+            log(f"Cargando {url} (intento {intento}/{reintentos}, timeout={timeout}s)...")
+            driver.get(url)
+            return True
+        except TimeoutException:
+            log(f"Timeout cargando la página (intento {intento}). Forzando detención de carga y continuando...")
+            try:
+                driver.execute_script("window.stop();")
+            except Exception:
+                pass
+            # Verificar si al menos algo se cargó
+            try:
+                body_len = len(driver.execute_script("return document.body ? document.body.innerHTML.length : 0;"))
+            except Exception:
+                body_len = 0
+            log(f"Contenido cargado tras detener: {body_len} caracteres en <body>")
+            if body_len and body_len > 500:
+                return True
+            if intento == reintentos:
+                log("Se alcanzó el máximo de reintentos. Se continúa con lo que haya cargado.")
+                return False
+            time.sleep(5)
+    return False
+
+
 def main():
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
@@ -165,7 +200,7 @@ def main():
 
     try:
         log("Abriendo portal SAP Fiori de Claro...")
-        driver.get(URL_HOME)
+        cargar_pagina(driver, URL_HOME, timeout=180, reintentos=2)
         time.sleep(12)
 
         log("Buscando botón de login (header)...")
@@ -252,7 +287,7 @@ def main():
         driver.save_screenshot("data/post_login.png")
 
         log("Navegando directo al módulo de stock por antigüedad (URL directa)...")
-        driver.get(URL_STOCK)
+        cargar_pagina(driver, URL_STOCK, timeout=180, reintentos=2)
         time.sleep(22)
         driver.save_screenshot("data/post_stock_nav.png")
 
