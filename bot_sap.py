@@ -30,8 +30,8 @@ except Exception:
 # Las credenciales se leen de variables de entorno (configuradas como
 # GitHub Secrets: SAP_USER y SAP_PASS). Si no existen, usa estos valores
 # por defecto (recomendado: moverlos a Secrets y borrar de aquí).
-USUARIO = os.getenv("SAP_USER", "AGED049128")
-PASSWORD = os.getenv("SAP_PASS", "Lunes18/")
+USUARIO = "AGED049128"
+PASSWORD = "Lunes18/"
 
 RANGO_INICIO = os.getenv("SAP_RANGO_INICIO", "")
 RANGO_FIN = os.getenv("SAP_RANGO_FIN", "")
