@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 # ──────────────────────────────────────────────
 # CONFIGURACIÓN
@@ -110,6 +111,14 @@ def guardar_resultado(data, status, mensaje):
     log(f"Guardado {SALIDA_JSON} ({len(data)} registros, status={status})")
 
 
+def escribir_lento(elemento, texto, delay=0.08):
+    """Escribe carácter por carácter con pequeñas pausas. Algunos formularios
+    SAP UI5/IAS no registran el valor si se escribe todo de una vez."""
+    for ch in texto:
+        elemento.send_keys(ch)
+        time.sleep(delay)
+
+
 def encontrar_campo(driver, by, selector, timeout=15):
     """
     Busca un elemento recorriendo el documento principal y todos los iframes
@@ -182,23 +191,31 @@ def main():
 
         campo_pass = driver.find_element(By.ID, "j_password")
 
-        log("Escribiendo usuario y contraseña (send_keys)...")
+        log("Escribiendo usuario y contraseña (carácter por carácter)...")
         campo_user.click()
+        time.sleep(0.3)
         campo_user.clear()
-        campo_user.send_keys(USUARIO)
+        escribir_lento(campo_user, USUARIO)
 
+        time.sleep(0.3)
         campo_pass.click()
+        time.sleep(0.3)
         campo_pass.clear()
-        campo_pass.send_keys(PASSWORD)
+        escribir_lento(campo_pass, PASSWORD)
 
-        val_user = driver.execute_script("return document.getElementById('j_username') ? document.getElementById('j_username').value : null;")
-        val_pass = driver.execute_script("return document.getElementById('j_password') ? document.getElementById('j_password').value : null;")
-        log(f"Verificación tras send_keys -> usuario: '{val_user}' (longitud={len(val_user or '')}), password longitud={len(val_pass or '')}")
+        # Tab para disparar validación/blur del framework
+        campo_pass.send_keys(Keys.TAB)
+        time.sleep(1)
+
+        val_user = campo_user.get_attribute("value")
+        val_pass = campo_pass.get_attribute("value")
+        log(f"Verificación (Selenium attribute) -> usuario: '{val_user}' (longitud={len(val_user or '')}), password longitud={len(val_pass or '')}")
 
         if not val_user or not val_pass:
-            log("send_keys no dejó los valores escritos. Probando con inyección JS + eventos...")
+            log("Los campos siguen vacíos tras escritura lenta. Probando inyección JS + eventos como último recurso...")
             set_value_js(driver, "j_username", USUARIO)
             set_value_js(driver, "j_password", PASSWORD)
+            time.sleep(1)
             val_user = driver.execute_script("return document.getElementById('j_username') ? document.getElementById('j_username').value : null;")
             val_pass = driver.execute_script("return document.getElementById('j_password') ? document.getElementById('j_password').value : null;")
             log(f"Verificación tras JS -> usuario: '{val_user}' (longitud={len(val_user or '')}), password longitud={len(val_pass or '')}")
