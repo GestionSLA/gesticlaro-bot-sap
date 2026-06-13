@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 
 # ──────────────────────────────────────────────
 # CONFIGURACIÓN
@@ -245,20 +246,20 @@ def main():
         log(f"Atributos j_username -> disabled={campo_user.get_attribute('disabled')}, readonly={campo_user.get_attribute('readonly')}, type={campo_user.get_attribute('type')}, displayed={campo_user.is_displayed()}, enabled={campo_user.is_enabled()}")
         log(f"Atributos j_password -> disabled={campo_pass.get_attribute('disabled')}, readonly={campo_pass.get_attribute('readonly')}, type={campo_pass.get_attribute('type')}, displayed={campo_pass.is_displayed()}, enabled={campo_pass.is_enabled()}")
 
-        log("Escribiendo usuario y contraseña (carácter por carácter)...")
-        campo_user.click()
-        time.sleep(0.3)
-        campo_user.clear()
-        escribir_lento(campo_user, USUARIO)
+        log("Escribiendo usuario (vía ActionChains - teclado global, evita problemas de iframe)...")
+        driver.execute_script("arguments[0].focus(); arguments[0].value='';", campo_user)
+        time.sleep(0.5)
+        ActionChains(driver).send_keys(USUARIO).perform()
+        time.sleep(0.5)
 
-        time.sleep(0.3)
-        campo_pass.click()
-        time.sleep(0.3)
-        campo_pass.clear()
-        escribir_lento(campo_pass, PASSWORD)
+        log("Escribiendo contraseña (vía ActionChains)...")
+        driver.execute_script("arguments[0].focus(); arguments[0].value='';", campo_pass)
+        time.sleep(0.5)
+        ActionChains(driver).send_keys(PASSWORD).perform()
+        time.sleep(0.5)
 
         # Tab para disparar validación/blur del framework
-        campo_pass.send_keys(Keys.TAB)
+        ActionChains(driver).send_keys(Keys.TAB).perform()
         time.sleep(1)
 
         val_user = campo_user.get_attribute("value")
@@ -266,7 +267,24 @@ def main():
         log(f"Verificación (Selenium attribute) -> usuario: '{val_user}' (longitud={len(val_user or '')}), password longitud={len(val_pass or '')}")
 
         if not val_user or not val_pass:
-            log("Los campos siguen vacíos tras escritura lenta. Probando inyección JS + eventos como último recurso...")
+            log("Los campos siguen vacíos tras ActionChains. Probando escritura lenta por elemento como respaldo...")
+            campo_user.click()
+            time.sleep(0.3)
+            campo_user.clear()
+            escribir_lento(campo_user, USUARIO)
+            time.sleep(0.3)
+            campo_pass.click()
+            time.sleep(0.3)
+            campo_pass.clear()
+            escribir_lento(campo_pass, PASSWORD)
+            campo_pass.send_keys(Keys.TAB)
+            time.sleep(1)
+            val_user = campo_user.get_attribute("value")
+            val_pass = campo_pass.get_attribute("value")
+            log(f"Verificación (escritura lenta) -> usuario: '{val_user}' (longitud={len(val_user or '')}), password longitud={len(val_pass or '')}")
+
+        if not val_user or not val_pass:
+            log("Los campos siguen vacíos. Probando inyección JS + eventos como último recurso...")
             set_value_js(driver, "j_username", USUARIO)
             set_value_js(driver, "j_password", PASSWORD)
             time.sleep(1)
