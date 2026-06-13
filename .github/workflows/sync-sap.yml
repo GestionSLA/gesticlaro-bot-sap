@@ -1,0 +1,44 @@
+name: Sincronizar Stock SAP Claro
+
+on:
+  schedule:
+    # Corre 4 veces al día (UTC). Ajustá los horarios si querés.
+    # 09:00, 13:00, 17:00, 21:00 hora Argentina (UTC-3) => 12,16,20,00 UTC
+    - cron: '0 12,16,20,0 * * *'
+  workflow_dispatch: {}   # permite ejecutarlo manualmente desde GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Instalar dependencias
+        run: pip install selenium
+
+      - name: Ejecutar bot SAP
+        env:
+          SAP_USER: ${{ secrets.SAP_USER }}
+          SAP_PASS: ${{ secrets.SAP_PASS }}
+        run: python bot_sap.py
+
+      - name: Commitear resultados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "Actualizar stock SAP - $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
