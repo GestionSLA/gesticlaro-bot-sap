@@ -1,42 +1,5 @@
-[07:11:19] Abriendo portal SAP Fiori de Claro...
-[07:11:19] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
-[07:11:34] Buscando botón de login (header)...
-[07:11:41] Buscando campo de usuario (j_username) en página principal e iframes...
-[07:12:02] Campo j_username encontrado dentro del iframe #0
-[07:12:02] Esperando estabilización del formulario dentro del iframe...
-[07:12:06] document.readyState del frame actual: complete
-[07:12:06] Atributos j_username -> disabled=None, readonly=None, type=text, displayed=True, enabled=True
-[07:12:06] Atributos j_password -> disabled=None, readonly=None, type=password, displayed=True, enabled=True
-[07:12:06] Escribiendo usuario y contraseña (carácter por carácter)...
-[07:12:08] Verificación (Selenium attribute) -> usuario: '' (longitud=0), password longitud=0
-[07:12:08] Los campos siguen vacíos tras escritura lenta. Probando inyección JS + eventos como último recurso...
-[07:12:09] Verificación tras JS -> usuario: '' (longitud=0), password longitud=0
-[07:12:09] ADVERTENCIA: los campos siguen vacíos. Se continúa de todas formas para diagnosticar, pero el login probablemente falle.
-[07:12:09] Presionando botón de ingreso...
-[07:12:10] Procesando login...
-[07:12:22] Navegando directo al módulo de stock por antigüedad (URL directa)...
-[07:12:22] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
-[07:12:44] Consultando Stock Disponible Principal...
-[07:13:10] ERROR CRÍTICO: Message: 
-Stacktrace:
-#0 0x5558fe1f780a <unknown>
-#1 0x5558fdbda289 <unknown>
-#2 0x5558fdc2e9b4 <unknown>
-#3 0x5558fdc2ec01 <unknown>
-#4 0x5558fdc79874 <unknown>
-#5 0x5558fdc76a4c <unknown>
-#6 0x5558fdc21f7f <unknown>
-#7 0x5558fdc22d61 <unknown>
-#8 0x5558fe1be0f7 <unknown>
-#9 0x5558fe1bc8bd <unknown>
-#10 0x5558fe1a75a6 <unknown>
-#11 0x5558fe1bd49a <unknown>
-#12 0x5558fe18f560 <unknown>
-#13 0x5558fe1e4288 <unknown>
-#14 0x5558fe1e4425 <unknown>
-#15 0x5558fe1f638e <unknown>
-#16 0x7fc6d9a9caa4 <unknown>
-#17 0x7fc6d9b29c6c <unknown>
-
-[07:13:10] URL al momento del error: https://aui6upqfs.accounts.ondemand.com/saml2/idp/sso/aui6upqfs.accounts.ondemand.com
-[07:13:10] Guardado data/stock_sap.json (0 registros, status=error)
+[07:18:01] Abriendo portal SAP Fiori de Claro...
+[07:18:01] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
+[07:20:01] ERROR CRÍTICO: HTTPConnectionPool(host='localhost', port=55687): Read timed out. (read timeout=120)
+[07:21:01] URL al momento del error: https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display
+[07:21:01] Guardado data/stock_sap.json (0 registros, status=error)
