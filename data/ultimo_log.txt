@@ -1,40 +1,35 @@
-[21:58:29] Abriendo portal SAP Fiori de Claro...
-[21:58:29] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
-[21:58:43] Paso 0: Verificando si requiere desplegar login corporativo...
-[21:58:43] Botón superior encontrado y presionado.
-[21:58:48] Paso 1: Escribiendo credenciales e ingresando...
-[21:58:48] Esperando que el campo j_username esté visible y clickeable...
-[21:58:48] Campo j_username listo. Esperando 2s adicionales de seguridad...
-[21:58:50] Inyectando usuario...
-[21:58:50]   -> j_username.value = ''
-[21:58:50] Inyectando contraseña...
-[21:58:50]   -> j_password.value longitud = 0
-[21:58:52] ADVERTENCIA: el campo de usuario sigue vacío tras inyección.
-[21:58:52] Presionando botón de ingreso 'Log On'...
-[21:58:54] Procesando login...
-[21:59:06] Navegando directo al módulo de stock por antigüedad (URL directa)...
-[21:59:06] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
-[21:59:28] Consultando Stock Disponible Principal...
-[21:59:54] ERROR CRÍTICO: Message: 
+[22:05:16] Abriendo portal SAP Fiori de Claro...
+[22:05:16] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
+[22:07:16] Error/timeout cargando la página (intento 1): ReadTimeoutError: HTTPConnectionPool(host='localhost', port=40841): Read timed out. (read timeout=120)
+[22:08:16] Contenido cargado tras detener: 0 caracteres en <body>
+[22:08:21] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 2/2, timeout=180s)...
+[22:10:21] Error/timeout cargando la página (intento 2): ReadTimeoutError: HTTPConnectionPool(host='localhost', port=40841): Read timed out. (read timeout=120)
+[22:10:49] Contenido cargado tras detener: 0 caracteres en <body>
+[22:10:49] Se alcanzó el máximo de reintentos. Se continúa con lo que haya cargado.
+[22:11:01] Paso 0: Verificando si requiere desplegar login corporativo...
+[22:11:21] El botón superior no respondió. Buscando formulario directamente...
+[22:11:21] Paso 1: Escribiendo credenciales e ingresando...
+[22:11:21] Esperando que el campo j_username esté visible y clickeable...
+[22:12:21] ERROR CRÍTICO: Message: 
 Stacktrace:
-#0 0x557db021580a <unknown>
-#1 0x557dafbf8289 <unknown>
-#2 0x557dafc4c9b4 <unknown>
-#3 0x557dafc4cc01 <unknown>
-#4 0x557dafc97874 <unknown>
-#5 0x557dafc94a4c <unknown>
-#6 0x557dafc3ff7f <unknown>
-#7 0x557dafc40d61 <unknown>
-#8 0x557db01dc0f7 <unknown>
-#9 0x557db01da8bd <unknown>
-#10 0x557db01c55a6 <unknown>
-#11 0x557db01db49a <unknown>
-#12 0x557db01ad560 <unknown>
-#13 0x557db0202288 <unknown>
-#14 0x557db0202425 <unknown>
-#15 0x557db021438e <unknown>
-#16 0x7f2a9f29caa4 <unknown>
-#17 0x7f2a9f329c6c <unknown>
+#0 0x55811887380a <unknown>
+#1 0x558118256289 <unknown>
+#2 0x5581182aa9b4 <unknown>
+#3 0x5581182aac01 <unknown>
+#4 0x5581182f5874 <unknown>
+#5 0x5581182f2a4c <unknown>
+#6 0x55811829df7f <unknown>
+#7 0x55811829ed61 <unknown>
+#8 0x55811883a0f7 <unknown>
+#9 0x5581188388bd <unknown>
+#10 0x5581188235a6 <unknown>
+#11 0x55811883949a <unknown>
+#12 0x55811880b560 <unknown>
+#13 0x558118860288 <unknown>
+#14 0x558118860425 <unknown>
+#15 0x55811887238e <unknown>
+#16 0x7f27d969caa4 <unknown>
+#17 0x7f27d9729c6c <unknown>
 
-[21:59:54] URL al momento del error: https://aui6upqfs.accounts.ondemand.com/saml2/idp/sso/aui6upqfs.accounts.ondemand.com
-[21:59:54] Guardado data/stock_sap.json (0 registros, status=error)
+[22:12:21] URL al momento del error: https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display
+[22:12:21] Guardado data/stock_sap.json (0 registros, status=error)
