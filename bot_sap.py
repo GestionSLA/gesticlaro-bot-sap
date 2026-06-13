@@ -9,6 +9,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.remote.remote_connection import RemoteConnection
+
+# El cliente HTTP de Selenium (Python -> chromedriver) tiene un timeout fijo
+# de 120s por defecto, INDEPENDIENTE del page_load_timeout de Chrome. Si
+# driver.get() tarda más que esto, urllib3 lanza ReadTimeoutError antes de
+# que nuestro page_load_timeout pueda actuar. Lo subimos a 300s.
+RemoteConnection.set_timeout(300)
 
 # ──────────────────────────────────────────────
 # CONFIGURACIÓN
@@ -107,8 +114,8 @@ def cargar_pagina(driver, url, timeout=180, reintentos=2):
             log(f"Cargando {url} (intento {intento}/{reintentos}, timeout={timeout}s)...")
             driver.get(url)
             return True
-        except TimeoutException:
-            log(f"Timeout cargando la página (intento {intento}). Forzando detención de carga y continuando...")
+        except (TimeoutException, Exception) as e:
+            log(f"Error/timeout cargando la página (intento {intento}): {type(e).__name__}: {e}")
             try:
                 driver.execute_script("window.stop();")
             except Exception:
