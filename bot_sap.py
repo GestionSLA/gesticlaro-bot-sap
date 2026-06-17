@@ -101,7 +101,7 @@ def guardar_log():
         f.write("\n".join(LOG_LINES))
 
 
-def extraer_datos_tabla(driver):
+def extraer_datos_tabla(driver, nombre_consulta="consulta"):
     xpath_tabla = (
         "//table[contains(@class, 'sapUiTableCtrl')]//tbody | "
         "//table[contains(@class, 'sapMListTbl')]//tbody"
@@ -110,23 +110,63 @@ def extraer_datos_tabla(driver):
         tabla_body = WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.XPATH, xpath_tabla))
         )
-        filas = tabla_body.find_elements(By.TAG_NAME, "tr")
-        resultados = []
-        for fila in filas:
-            celdas = fila.find_elements(By.TAG_NAME, "td")
-            if celdas:
-                valores = [c.text.strip() for c in celdas]
-                if len(valores) >= len(COLUMNAS_SAP):
-                    registro = {
-                        COLUMNAS_SAP[i]: valores[i]
-                        for i in range(len(COLUMNAS_SAP))
-                        if COLUMNAS_SAP[i] in COLUMNAS_RELEVANTES
-                    }
-                    resultados.append(registro)
-        return resultados
     except Exception as e:
-        log(f"Aviso: no se pudo leer la tabla ({e})")
+        log(f"Aviso: no se encontró ninguna tabla para '{nombre_consulta}' ({e})")
         return []
+
+    # Guardamos el HTML crudo de la tabla para poder diagnosticar a ciegas
+    # si algo vuelve a salir mal (qué filas/columnas existen realmente).
+    try:
+        os.makedirs("data", exist_ok=True)
+        html_tabla = tabla_body.get_attribute("outerHTML")
+        with open(f"data/debug_tabla_{nombre_consulta}.html", "w", encoding="utf-8") as f:
+            f.write(html_tabla)
+    except Exception as e:
+        log(f"  No se pudo guardar el HTML de depuración: {e}")
+
+    filas = tabla_body.find_elements(By.TAG_NAME, "tr")
+    log(f"  Tabla '{nombre_consulta}': {len(filas)} fila(s) <tr> encontradas en el DOM")
+
+    resultados = []
+    filas_descartadas_header = 0
+    filas_descartadas_cortas = 0
+
+    for idx, fila in enumerate(filas):
+        celdas = fila.find_elements(By.TAG_NAME, "td")
+        if not celdas:
+            continue
+        valores = [c.text.strip() for c in celdas]
+
+        # Log crudo de las primeras 3 filas para diagnóstico, siempre.
+        if idx < 3:
+            log(f"  Fila[{idx}] cruda ({len(valores)} celdas): {valores}")
+
+        if len(valores) < len(COLUMNAS_SAP):
+            filas_descartadas_cortas += 1
+            continue
+
+        # Descartar filas de encabezado: si los valores coinciden textualmente
+        # con los nombres de columna esperados (es la fila de títulos, no datos).
+        es_header = all(
+            valores[i].strip().lower() == COLUMNAS_SAP[i].strip().lower().replace("_", " ")
+            or valores[i].strip().lower() == COLUMNAS_SAP[i].strip().lower()
+            for i in range(min(3, len(COLUMNAS_SAP)))
+        )
+        if es_header:
+            filas_descartadas_header += 1
+            continue
+
+        registro = {
+            COLUMNAS_SAP[i]: valores[i]
+            for i in range(len(COLUMNAS_SAP))
+            if COLUMNAS_SAP[i] in COLUMNAS_RELEVANTES
+        }
+        resultados.append(registro)
+
+    log(f"  '{nombre_consulta}' -> {len(resultados)} registro(s) de datos, "
+        f"{filas_descartadas_header} fila(s) de encabezado descartadas, "
+        f"{filas_descartadas_cortas} fila(s) con menos columnas de las esperadas")
+    return resultados
 
 
 def guardar_resultado(data, status, mensaje):
@@ -306,7 +346,8 @@ def main():
         campo_fin.send_keys(RANGO_FIN)
         driver.find_element(By.XPATH, xpath_btn_consultar).click()
         time.sleep(12)
-        registros_stock_actual.extend(extraer_datos_tabla(driver))
+        driver.save_screenshot("data/resultado_stock_principal.png")
+        registros_stock_actual.extend(extraer_datos_tabla(driver, "stock_principal"))
         log(f"Stock principal: {len(registros_stock_actual)} registros")
 
         log("Consultando Depósito de Reingreso...")
@@ -319,7 +360,8 @@ def main():
         ).click()
         driver.find_element(By.XPATH, xpath_btn_consultar).click()
         time.sleep(12)
-        registros_stock_actual.extend(extraer_datos_tabla(driver))
+        driver.save_screenshot("data/resultado_reingreso.png")
+        registros_stock_actual.extend(extraer_datos_tabla(driver, "deposito_reingreso"))
         log(f"Stock total acumulado: {len(registros_stock_actual)} registros")
 
         log("Consultando Stock en Tránsito...")
@@ -335,7 +377,8 @@ def main():
         ).click()
         driver.find_element(By.XPATH, xpath_btn_consultar).click()
         time.sleep(12)
-        registros_transito = extraer_datos_tabla(driver)
+        driver.save_screenshot("data/resultado_transito.png")
+        registros_transito = extraer_datos_tabla(driver, "stock_transito")
         log(f"Stock en tránsito: {len(registros_transito)} registros")
 
         resultado_total = []
