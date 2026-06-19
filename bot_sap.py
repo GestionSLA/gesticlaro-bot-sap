@@ -155,91 +155,232 @@ def esperar_resultados_tabla(driver, nombre_consulta="consulta", timeout=40):
     return False
 
 
-def extraer_datos_tabla(driver, nombre_consulta="consulta"):
-    # XPath del contenedor real de datos (no los encabezados fijos).
-    # __xmlview4--TabReport-tableCCnt es el div que contiene la tabla
-    # de filas de resultados en el módulo de stock de SAP Fiori Claro.
+def obtener_encabezados_visibles(driver):
+    """
+    Lee los nombres de columna actualmente visibles en el header de la
+    tabla SAP UI5, en orden. Esto nos permite saber a qué campo corresponde
+    cada celda visible en la posición de scroll horizontal actual.
+    """
+    xpath_headers = (
+        "//table[contains(@class,'sapUiTableColHdrTbl')]//th | "
+        "//*[@id='__xmlview4--TabReport-tableCCnt']//thead//th | "
+        "//div[contains(@class,'sapUiTableColHdrCnt')]//div[contains(@class,'sapUiTableHeaderDataCell')]"
+    )
+    try:
+        headers_el = driver.find_elements(By.XPATH, xpath_headers)
+        nombres = [h.text.strip() for h in headers_el if h.text.strip()]
+        return nombres
+    except Exception:
+        return []
+
+
+def mapear_columna_sap(nombre_visible):
+    """Normaliza el nombre de columna mostrado en pantalla (ej. 'Días
+    Antiguedad') a la clave interna usada en COLUMNAS_SAP (ej.
+    'Dias_Antiguedad')."""
+    n = (nombre_visible or "").strip().lower()
+    equivalencias = {
+        "material": "Material",
+        "serial": "Serial",
+        "texto": "Texto",
+        "centro": "Centro",
+        "almacén": "Almacen",
+        "almacen": "Almacen",
+        "movimiento": "Movimiento",
+        "mov. texto": "Mov_texto",
+        "mov texto": "Mov_texto",
+        "modelo": "Modelo",
+        "origen": "Origen",
+        "precio": "Precio",
+        "días antiguedad": "Dias_Antiguedad",
+        "dias antiguedad": "Dias_Antiguedad",
+        "días antigüedad": "Dias_Antiguedad",
+        "dias antigüedad": "Dias_Antiguedad",
+        "semáforo": "Semaforo",
+        "semaforo": "Semaforo",
+        "fecha antiguedad": "Fecha_Antiguedad",
+        "fecha antigüedad": "Fecha_Antiguedad",
+        "nro. pedido": "Nro_Pedido",
+        "nro pedido": "Nro_Pedido",
+    }
+    return equivalencias.get(n)
+
+
+def leer_filas_visibles(driver, nombre_consulta):
+    """
+    Lee las filas y columnas actualmente visibles en la tabla (según la
+    posición de scroll actual) y devuelve una lista de dicts parciales,
+    usando 'Serial' como clave para poder fusionarlas después con lo leído
+    en otras posiciones de scroll.
+    """
     xpath_contenedor = '//*[@id="__xmlview4--TabReport-tableCCnt"]'
     xpath_tabla_fallback = (
         "//table[contains(@class, 'sapUiTableCtrl') and not(contains(@class,'sapUiTableColHdrCnt'))]//tbody"
     )
-
     try:
-        # Primero intentamos el contenedor específico conocido
         try:
             contenedor = driver.find_element(By.XPATH, xpath_contenedor)
             tabla_body = contenedor.find_element(By.TAG_NAME, "tbody")
-            log(f"  Tabla '{nombre_consulta}': usando contenedor tableCCnt")
         except Exception:
-            # Fallback: cualquier tbody de tabla SAP que no sea de encabezados
-            tabla_body = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, xpath_tabla_fallback))
-            )
-            log(f"  Tabla '{nombre_consulta}': usando fallback XPath genérico")
+            tabla_body = driver.find_element(By.XPATH, xpath_tabla_fallback)
+    except Exception:
+        return []
 
-        # Guardamos HTML para diagnóstico
-        try:
-            os.makedirs("data", exist_ok=True)
-            html_tabla = tabla_body.get_attribute("outerHTML")
-            with open(f"data/debug_tabla_{nombre_consulta}.html", "w", encoding="utf-8") as f:
-                f.write(html_tabla)
-        except Exception as e:
-            log(f"  No se pudo guardar HTML de depuración: {e}")
+    headers_visibles = obtener_encabezados_visibles(driver)
+    columnas_mapeadas = [mapear_columna_sap(h) for h in headers_visibles]
 
-        filas = tabla_body.find_elements(By.TAG_NAME, "tr")
-        log(f"  Tabla '{nombre_consulta}': {len(filas)} fila(s) <tr> en el DOM")
+    filas = tabla_body.find_elements(By.TAG_NAME, "tr")
+    parciales = []
 
-        resultados = []
-        filas_descartadas_header = 0
-        filas_descartadas_cortas = 0
-        filas_vacias = 0
+    for fila in filas:
+        celdas = fila.find_elements(By.TAG_NAME, "td")
+        if not celdas:
+            continue
+        valores = [c.text.strip() for c in celdas]
+        if not any(valores):
+            continue
 
-        for idx, fila in enumerate(filas):
-            celdas = fila.find_elements(By.TAG_NAME, "td")
-            if not celdas:
-                continue
-            valores = [c.text.strip() for c in celdas]
+        registro = {}
+        if columnas_mapeadas and len(columnas_mapeadas) == len(valores):
+            # Emparejamos por nombre de columna leído del header visible
+            for col, val in zip(columnas_mapeadas, valores):
+                if col and col in COLUMNAS_RELEVANTES:
+                    registro[col] = val
+        else:
+            # Fallback posicional si no pudimos leer headers (orden fijo conocido)
+            for i, val in enumerate(valores):
+                if i < len(COLUMNAS_SAP) and COLUMNAS_SAP[i] in COLUMNAS_RELEVANTES:
+                    registro[COLUMNAS_SAP[i]] = val
 
-            if idx < 3:
-                log(f"  Fila[{idx}] ({len(valores)} celdas): {valores}")
+        if registro.get("Serial") and len(registro.get("Serial", "")) > 5:
+            parciales.append(registro)
 
-            # Ignorar filas completamente vacías (filas "placeholder" de UI5)
-            if not any(valores):
-                filas_vacias += 1
-                continue
+    return parciales
 
-            if len(valores) < len(COLUMNAS_SAP):
-                filas_descartadas_cortas += 1
-                continue
 
-            # Descartar fila si sus primeras 3 celdas coinciden con los nombres de columna
-            es_header = all(
-                valores[i].strip().lower() in (
-                    COLUMNAS_SAP[i].lower(),
-                    COLUMNAS_SAP[i].lower().replace("_", " ")
-                )
-                for i in range(min(3, len(COLUMNAS_SAP)))
-            )
-            if es_header:
-                filas_descartadas_header += 1
-                continue
+def scroll_vertical(driver, posicion):
+    """Mueve la scrollbar vertical de la tabla a una posición absoluta (px)."""
+    try:
+        driver.execute_script("""
+            const sb = document.getElementById('__xmlview4--TabReport-vsb');
+            if (sb) { sb.scrollTop = arguments[0]; sb.dispatchEvent(new Event('scroll', {bubbles:true})); }
+        """, posicion)
+        return True
+    except Exception:
+        return False
 
-            registro = {
-                COLUMNAS_SAP[i]: valores[i]
-                for i in range(len(COLUMNAS_SAP))
-                if COLUMNAS_SAP[i] in COLUMNAS_RELEVANTES
-            }
-            resultados.append(registro)
 
-        log(f"  '{nombre_consulta}' -> {len(resultados)} registro(s), "
-            f"{filas_descartadas_header} encabezado(s), "
-            f"{filas_vacias} vacía(s), "
-            f"{filas_descartadas_cortas} corta(s)")
+def scroll_horizontal(driver, posicion):
+    """Mueve la scrollbar horizontal de la tabla a una posición absoluta (px)."""
+    try:
+        driver.execute_script("""
+            const sb = document.getElementById('__xmlview4--TabReport-hsb');
+            if (sb) { sb.scrollLeft = arguments[0]; sb.dispatchEvent(new Event('scroll', {bubbles:true})); }
+        """, posicion)
+        return True
+    except Exception:
+        return False
+
+
+def obtener_metricas_scroll(driver, eje):
+    """eje: 'vsb' (vertical) o 'hsb' (horizontal). Devuelve (scrollActual, scrollMax, tamañoVisible)."""
+    try:
+        return driver.execute_script("""
+            const sb = document.getElementById(arguments[0]);
+            if (!sb) return null;
+            const prop = arguments[0].endsWith('hsb') ? 'scrollLeft' : 'scrollTop';
+            const max = arguments[0].endsWith('hsb')
+                ? (sb.scrollWidth - sb.clientWidth)
+                : (sb.scrollHeight - sb.clientHeight);
+            const visible = arguments[0].endsWith('hsb') ? sb.clientWidth : sb.clientHeight;
+            return [sb[prop], max, visible];
+        """, f"__xmlview4--TabReport-{eje}")
+    except Exception:
+        return None
+
+
+def extraer_datos_tabla(driver, nombre_consulta="consulta", max_pasos_v=60, max_pasos_h=15):
+    """
+    Extrae TODOS los datos de la tabla SAP recorriendo ambas scrollbars
+    (vertical y horizontal), ya que la tabla es virtualizada: el DOM solo
+    contiene las filas/columnas actualmente visibles en pantalla.
+
+    Estrategia:
+      1. Por cada posición vertical (de a "páginas" de filas visibles):
+         2. Por cada posición horizontal (de a "páginas" de columnas visibles):
+            - Leer filas/columnas visibles, emparejando por nombre de columna.
+            - Fusionar con lo ya leído de esa fila (mismo Serial) en otras
+              posiciones horizontales.
+      3. Avanzar verticalmente hasta cubrir todo el scrollHeight.
+    """
+    os.makedirs("data", exist_ok=True)
+
+    # Guardamos un HTML de referencia para diagnóstico (estado inicial)
+    try:
+        contenedor = driver.find_element(By.XPATH, '//*[@id="__xmlview4--TabReport-tableCCnt"]')
+        with open(f"data/debug_tabla_{nombre_consulta}.html", "w", encoding="utf-8") as f:
+            f.write(contenedor.get_attribute("outerHTML"))
+    except Exception as e:
+        log(f"  No se pudo guardar HTML de depuración: {e}")
+
+    metr_v = obtener_metricas_scroll(driver, "vsb")
+    metr_h = obtener_metricas_scroll(driver, "hsb")
+
+    if not metr_v or metr_v[1] is None:
+        log(f"  '{nombre_consulta}': no se detectó scrollbar vertical, se lee una sola vez")
+        filas_por_serial = {}
+        for reg in leer_filas_visibles(driver, nombre_consulta):
+            filas_por_serial.setdefault(reg["Serial"], {}).update(reg)
+        resultados = list(filas_por_serial.values())
+        log(f"  '{nombre_consulta}' -> {len(resultados)} registro(s) (sin scroll)")
         return resultados
 
-    except Exception as e:
-        log(f"  Error leyendo tabla '{nombre_consulta}': {e}")
-        return []
+    scroll_max_v, paso_v = metr_v[1], max(metr_v[2] or 300, 100)
+    scroll_max_h, paso_h = (metr_h[1] if metr_h else 0), max((metr_h[2] if metr_h else 300), 100)
+
+    log(f"  '{nombre_consulta}': scroll vertical max={scroll_max_v}px (paso~{paso_v}px), "
+        f"horizontal max={scroll_max_h}px (paso~{paso_h}px)")
+
+    filas_por_serial = {}
+    pos_v = 0
+    paso_count_v = 0
+
+    while True:
+        scroll_vertical(driver, pos_v)
+        time.sleep(0.6)
+
+        # Recorrido horizontal en esta posición vertical
+        pos_h = 0
+        paso_count_h = 0
+        while True:
+            scroll_horizontal(driver, pos_h)
+            time.sleep(0.5)
+
+            for reg in leer_filas_visibles(driver, nombre_consulta):
+                serial = reg.get("Serial")
+                if not serial:
+                    continue
+                filas_por_serial.setdefault(serial, {}).update(reg)
+
+            if scroll_max_h <= 0 or pos_h >= scroll_max_h or paso_count_h >= max_pasos_h:
+                break
+            pos_h = min(pos_h + paso_h, scroll_max_h)
+            paso_count_h += 1
+
+        # Volver scroll horizontal a 0 antes de seguir bajando (más estable)
+        scroll_horizontal(driver, 0)
+        time.sleep(0.3)
+
+        if pos_v >= scroll_max_v or paso_count_v >= max_pasos_v:
+            break
+        pos_v = min(pos_v + paso_v, scroll_max_v)
+        paso_count_v += 1
+
+    resultados = list(filas_por_serial.values())
+    completos = sum(1 for r in resultados if len(r) >= 6)
+    log(f"  '{nombre_consulta}' -> {len(resultados)} registro(s) únicos por Serial "
+        f"({completos} con 6+ campos completos), tras {paso_count_v + 1} paso(s) verticales")
+
     return resultados
 
 
