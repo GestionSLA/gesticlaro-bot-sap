@@ -1,7 +1,7 @@
 {
   "status": "listo",
   "mensaje": "Sincronización completada: 127 registros",
-  "actualizado": "2026-06-21T17:17:01.030985+00:00",
+  "actualizado": "2026-06-21T23:37:47.017635+00:00",
   "cantidad": 127,
   "data": [
     {
@@ -14,7 +14,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013455",
@@ -26,7 +27,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013455",
@@ -38,7 +40,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013455",
@@ -50,7 +53,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013455",
@@ -62,7 +66,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013456",
@@ -74,7 +79,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013456",
@@ -86,7 +92,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013456",
@@ -98,7 +105,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013456",
@@ -110,7 +118,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013456",
@@ -122,7 +131,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013575",
@@ -134,7 +144,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013581",
@@ -146,7 +157,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013581",
@@ -158,7 +170,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013581",
@@ -170,7 +183,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013581",
@@ -182,7 +196,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013760",
@@ -194,7 +209,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -206,7 +222,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -218,7 +235,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -230,7 +248,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -242,7 +261,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -254,7 +274,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -266,7 +287,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013761",
@@ -278,7 +300,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013887",
@@ -290,7 +313,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -302,7 +326,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -314,7 +339,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -326,7 +352,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -338,7 +365,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -350,7 +378,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -362,7 +391,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -374,7 +404,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -386,7 +417,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -398,7 +430,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -410,7 +443,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -422,7 +456,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -434,7 +469,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -446,7 +482,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015115",
@@ -458,7 +495,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015118",
@@ -470,7 +508,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015118",
@@ -482,7 +521,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015118",
@@ -494,7 +534,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015118",
@@ -506,7 +547,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -518,7 +560,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -530,7 +573,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -542,7 +586,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -554,7 +599,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -566,7 +612,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -578,7 +625,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015120",
@@ -590,7 +638,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015194",
@@ -602,7 +651,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015194",
@@ -614,7 +664,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015194",
@@ -626,7 +677,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015194",
@@ -638,7 +690,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -650,7 +703,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -662,7 +716,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -674,7 +729,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -686,7 +742,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -698,7 +755,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015354",
@@ -710,7 +768,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015355",
@@ -722,7 +781,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015356",
@@ -734,7 +794,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -746,7 +807,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -758,7 +820,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -770,7 +833,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -782,7 +846,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -794,7 +859,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -806,7 +872,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015723",
@@ -818,7 +885,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015724",
@@ -830,7 +898,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015724",
@@ -842,7 +911,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015724",
@@ -854,7 +924,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -866,7 +937,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -878,7 +950,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -890,7 +963,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -902,7 +976,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -914,7 +989,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -926,7 +1002,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70015725",
@@ -938,7 +1015,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016044",
@@ -950,7 +1028,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016044",
@@ -962,7 +1041,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016045",
@@ -974,7 +1054,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016045",
@@ -986,7 +1067,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -998,7 +1080,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -1010,7 +1093,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -1022,7 +1106,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -1034,7 +1119,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -1046,7 +1132,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016046",
@@ -1058,7 +1145,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016259",
@@ -1070,7 +1158,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016259",
@@ -1082,7 +1171,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016275",
@@ -1094,7 +1184,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016277",
@@ -1106,7 +1197,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016277",
@@ -1118,7 +1210,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016449",
@@ -1130,7 +1223,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016449",
@@ -1142,7 +1236,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016449",
@@ -1154,7 +1249,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016449",
@@ -1166,7 +1262,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016449",
@@ -1178,7 +1275,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016451",
@@ -1190,7 +1288,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016453",
@@ -1202,7 +1301,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016453",
@@ -1214,7 +1314,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016454",
@@ -1226,7 +1327,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016811",
@@ -1238,7 +1340,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016811",
@@ -1250,7 +1353,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016811",
@@ -1262,7 +1366,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016928",
@@ -1274,7 +1379,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016928",
@@ -1286,7 +1392,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70016934",
@@ -1298,7 +1405,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "principal"
     },
     {
       "Material": "70013941",
@@ -1310,7 +1418,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "reingreso"
     },
     {
       "Material": "70015723",
@@ -1322,7 +1431,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock actual"
+      "Categoria": "Stock actual",
+      "Origen": "reingreso"
     },
     {
       "Material": "70010671",
@@ -1334,7 +1444,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015194",
@@ -1346,7 +1457,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015194",
@@ -1358,7 +1470,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015194",
@@ -1370,7 +1483,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015354",
@@ -1382,7 +1496,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015354",
@@ -1394,7 +1509,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015354",
@@ -1406,7 +1522,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015354",
@@ -1418,7 +1535,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70015354",
@@ -1430,7 +1548,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016277",
@@ -1442,7 +1561,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016277",
@@ -1454,7 +1574,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016277",
@@ -1466,7 +1587,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016455",
@@ -1478,7 +1600,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016456",
@@ -1490,7 +1613,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016478",
@@ -1502,7 +1626,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016478",
@@ -1514,7 +1639,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     },
     {
       "Material": "70016478",
@@ -1526,7 +1652,8 @@
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
-      "Categoria": "Stock en Tránsito"
+      "Categoria": "Stock en Tránsito",
+      "Origen": "transito"
     }
   ]
 }
