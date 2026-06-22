@@ -324,6 +324,26 @@ def extraer_datos_tabla(driver, nombre_consulta="consulta", max_pasos_v=60, max_
         log(f"  No se pudo guardar HTML de depuración: {e}")
 
     metr_v = obtener_metricas_scroll(driver, "vsb")
+
+    # Bajar el scroll de la PÁGINA hasta el final (xpath __page2-cont) para
+    # que la scrollbar horizontal de la tabla quede visible en pantalla — sin
+    # esto el hsb no es accesible y las columnas de la derecha (Dias_Antiguedad,
+    # Semaforo, Fecha_Antiguedad, Nro_Pedido) nunca se renderizan en el DOM.
+    try:
+        driver.execute_script("""
+            const pg = document.getElementById('__page2-cont');
+            if (pg) {
+                pg.scrollTop = pg.scrollHeight;
+                pg.dispatchEvent(new Event('scroll', {bubbles: true}));
+            } else {
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        """)
+        time.sleep(0.8)
+        log(f"  '{nombre_consulta}': scroll de página bajado al fondo para exponer hsb")
+    except Exception as e:
+        log(f"  '{nombre_consulta}': no se pudo bajar scroll de página: {e}")
+
     metr_h = obtener_metricas_scroll(driver, "hsb")
 
     if not metr_v or metr_v[1] is None:
