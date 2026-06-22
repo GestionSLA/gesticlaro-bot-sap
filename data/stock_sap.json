@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 123 registros",
-  "actualizado": "2026-06-22T20:21:15.361426+00:00",
-  "cantidad": 123,
+  "mensaje": "Sincronización completada: 119 registros",
+  "actualizado": "2026-06-22T21:39:07.255891+00:00",
+  "cantidad": 119,
   "data": [
     {
       "Material": "70010671",
@@ -228,19 +228,6 @@
     {
       "Material": "70013761",
       "Serial": "351493531742650",
-      "Texto": "MOT MTE1564GX2523 CZ",
-      "Centro": "N902",
-      "Precio": "166578.750",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70013761",
-      "Serial": "351493531742759",
       "Texto": "MOT MTE1564GX2523 CZ",
       "Centro": "N902",
       "Precio": "166578.750",
@@ -721,19 +708,6 @@
     },
     {
       "Material": "70015354",
-      "Serial": "356841322413680",
-      "Texto": "SMG GXA16128/4165 NG T",
-      "Centro": "N902",
-      "Precio": "322713.260",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015354",
       "Serial": "356841323095767",
       "Texto": "SMG GXA16128/4165 NG T",
       "Centro": "N902",
@@ -868,19 +842,6 @@
       "Texto": "SMG GXA16128/4165 VC T",
       "Centro": "N902",
       "Precio": "322713.260",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015723",
-      "Serial": "862712088391419",
-      "Texto": "HOR X5C 128GB GR",
-      "Centro": "N902",
-      "Precio": "181063.910",
       "Dias_Antiguedad": "",
       "Semaforo": "",
       "Fecha_Antiguedad": "",
@@ -1388,19 +1349,6 @@
       "Texto": "MOT G17128XT2623 AZ T",
       "Centro": "N902",
       "Precio": "283357.890",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016451",
-      "Serial": "356558700850636",
-      "Texto": "MOT MG67256G621-1 VR T",
-      "Centro": "N902",
-      "Precio": "488005.820",
       "Dias_Antiguedad": "",
       "Semaforo": "",
       "Fecha_Antiguedad": "",
