@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 135 registros",
-  "actualizado": "2026-06-24T18:26:38.178145+00:00",
-  "cantidad": 135,
+  "mensaje": "Sincronización completada: 131 registros",
+  "actualizado": "2026-06-24T23:57:05.433272+00:00",
+  "cantidad": 131,
   "data": [
     {
       "Material": "70010671",
@@ -616,32 +616,6 @@
       "Origen": "principal"
     },
     {
-      "Material": "70015194",
-      "Serial": "863508081686881",
-      "Texto": "HOR X7D 256GB NG",
-      "Centro": "N902",
-      "Precio": "362128.550",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015194",
-      "Serial": "863508081686956",
-      "Texto": "HOR X7D 256GB NG",
-      "Centro": "N902",
-      "Precio": "362128.550",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
       "Material": "70015354",
       "Serial": "356841323095767",
       "Texto": "SMG GXA16128/4165 NG T",
@@ -722,19 +696,6 @@
     {
       "Material": "70015354",
       "Serial": "356841323284791",
-      "Texto": "SMG GXA16128/4165 NG T",
-      "Centro": "N902",
-      "Precio": "322713.260",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015354",
-      "Serial": "356841323292091",
       "Texto": "SMG GXA16128/4165 NG T",
       "Centro": "N902",
       "Precio": "322713.260",
@@ -1258,19 +1219,6 @@
       "Texto": "MOT MTG77256G21-3 VR T",
       "Centro": "N902",
       "Precio": "566716.570",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016478",
-      "Serial": "356558700712778",
-      "Texto": "MOT MG67256G621-1 GR T",
-      "Centro": "N902",
-      "Precio": "488005.820",
       "Dias_Antiguedad": "",
       "Semaforo": "",
       "Fecha_Antiguedad": "",
