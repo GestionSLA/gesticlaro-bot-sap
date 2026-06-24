@@ -1,7 +1,7 @@
 {
   "status": "listo",
   "mensaje": "Sincronización completada: 109 registros",
-  "actualizado": "2026-06-23T23:42:42.395905+00:00",
+  "actualizado": "2026-06-24T10:41:10.226609+00:00",
   "cantidad": 109,
   "data": [
     {
@@ -1401,7 +1401,7 @@
       "Texto": "HUA B535-636 BL",
       "Centro": "N902",
       "Precio": "63529.410",
-      "Dias_Antiguedad": "323",
+      "Dias_Antiguedad": "324",
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
@@ -1414,7 +1414,7 @@
       "Texto": "HOR X5C 128GB GR",
       "Centro": "N902",
       "Precio": "181063.910",
-      "Dias_Antiguedad": "106",
+      "Dias_Antiguedad": "107",
       "Semaforo": "",
       "Fecha_Antiguedad": "",
       "Nro_Pedido": "",
