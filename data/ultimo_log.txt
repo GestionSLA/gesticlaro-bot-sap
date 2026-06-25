@@ -1,37 +1,301 @@
-[23:53:16] Abriendo portal SAP Fiori de Claro...
-[23:53:16] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
-[23:53:31] Paso 0: Verificando si requiere desplegar login corporativo...
-[23:53:32] Botón superior encontrado y presionado.
-[23:53:36] Paso 1: Escribiendo credenciales e ingresando...
-[23:53:36] Esperando que el campo j_username esté visible y clickeable...
-[23:53:36] Campo j_username listo. Esperando 2s adicionales de seguridad...
-[23:53:39] Inyectando usuario...
-[23:53:39]   -> j_username.value = 'AGED049128'
-[23:53:39] Inyectando contraseña...
-[23:53:39]   -> j_password.value longitud = 8
-[23:53:41] Presionando botón de ingreso 'Log On'...
-[23:53:44] Procesando login...
-[23:53:57] Navegando directo al módulo de stock por antigüedad (URL directa)...
-[23:53:57] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
-[23:54:19] Consultando Stock Disponible Principal...
-[23:55:00]   'stock_principal': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[23:55:01]   'stock_principal': scroll de página bajado al fondo para exponer hsb
-[23:55:01]   'stock_principal': métricas hsb (tableCCnt) = [0, 0, 1278]
-[23:55:01]   'stock_principal': scroll vertical max=2838px (paso~429px), horizontal max=0px (paso~1278px)
-[23:55:23]   'stock_principal' -> 99 registro(s) únicos por Serial (99 con 6+ campos completos), tras 8 paso(s) verticales
-[23:55:23] Stock principal: 99 registros
-[23:55:23] Consultando Depósito de Reingreso...
-[23:56:08]   'deposito_reingreso': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[23:56:08]   'deposito_reingreso': scroll de página bajado al fondo para exponer hsb
-[23:56:08]   'deposito_reingreso': métricas hsb (tableCCnt) = [0, 0, 1278]
-[23:56:08]   'deposito_reingreso': scroll vertical max=0px (paso~300px), horizontal max=0px (paso~1278px)
-[23:56:11]   'deposito_reingreso' -> 2 registro(s) únicos por Serial (2 con 6+ campos completos), tras 1 paso(s) verticales
-[23:56:11] Stock total acumulado: 101 registros
-[23:56:11] Consultando Stock en Tránsito...
-[23:56:56]   'stock_transito': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[23:56:57]   'stock_transito': scroll de página bajado al fondo para exponer hsb
-[23:56:57]   'stock_transito': métricas hsb (tableCCnt) = [0, 0, 1278]
-[23:56:57]   'stock_transito': scroll vertical max=561px (paso~429px), horizontal max=0px (paso~1278px)
-[23:57:05]   'stock_transito' -> 30 registro(s) únicos por Serial (30 con 6+ campos completos), tras 3 paso(s) verticales
-[23:57:05] Stock en tránsito: 30 registros
-[23:57:05] Guardado data/stock_sap.json (131 registros, status=listo)
+[01:39:50] Abriendo portal SAP Fiori de Claro...
+[01:39:50] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
+[01:40:05] Paso 0: Verificando si requiere desplegar login corporativo...
+[01:40:05] Botón superior encontrado y presionado.
+[01:40:10] Paso 1: Escribiendo credenciales e ingresando...
+[01:40:10] Esperando que el campo j_username esté visible y clickeable...
+[01:40:10] Campo j_username listo. Esperando 2s adicionales de seguridad...
+[01:40:12] Inyectando usuario...
+[01:40:12]   -> j_username.value = 'AGED049128'
+[01:40:12] Inyectando contraseña...
+[01:40:12]   -> j_password.value longitud = 8
+[01:40:15] Presionando botón de ingreso 'Log On'...
+[01:40:18] Procesando login...
+[01:40:31] Navegando directo al módulo de stock por antigüedad (URL directa)...
+[01:40:31] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
+[01:40:53] Consultando Stock Disponible Principal...
+[01:41:34]   'stock_principal': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[01:41:35]   'stock_principal': scroll de página bajado al fondo para exponer hsb
+[01:41:35]   'stock_principal': métricas hsb (tableCCnt) = [0, 0, 1278]
+[01:41:35]   'stock_principal': scroll vertical max=2838px (paso~429px), horizontal max=0px (paso~1278px)
+[01:41:45]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:41:47]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:42:00]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:42:01]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:42:14]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:42:16]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:42:28]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:42:30]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:42:43]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:42:44]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:42:57]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:42:59]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:43:11]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:43:13]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:43:26]   'stock_principal': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:43:27]   'stock_principal': navegadas 4 columnas a la derecha con teclado
+[01:43:30]   'stock_principal' -> 99 registro(s) únicos por Serial (99 con 6+ campos completos), tras 8 paso(s) verticales
+[01:43:30] Stock principal: 99 registros
+[01:43:30] Consultando Depósito de Reingreso...
+[01:44:14]   'deposito_reingreso': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[01:44:15]   'deposito_reingreso': scroll de página bajado al fondo para exponer hsb
+[01:44:15]   'deposito_reingreso': métricas hsb (tableCCnt) = [0, 0, 1278]
+[01:44:15]   'deposito_reingreso': scroll vertical max=0px (paso~300px), horizontal max=0px (paso~1278px)
+[01:44:25]   'deposito_reingreso': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:44:27]   'deposito_reingreso': navegadas 4 columnas a la derecha con teclado
+[01:44:30]   'deposito_reingreso' -> 2 registro(s) únicos por Serial (2 con 6+ campos completos), tras 1 paso(s) verticales
+[01:44:30] Stock total acumulado: 101 registros
+[01:44:30] Consultando Stock en Tránsito...
+[01:45:14]   'stock_transito': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[01:45:15]   'stock_transito': scroll de página bajado al fondo para exponer hsb
+[01:45:15]   'stock_transito': métricas hsb (tableCCnt) = [0, 0, 1278]
+[01:45:15]   'stock_transito': scroll vertical max=561px (paso~429px), horizontal max=0px (paso~1278px)
+[01:45:25]   'stock_transito': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:45:27]   'stock_transito': navegadas 4 columnas a la derecha con teclado
+[01:45:40]   'stock_transito': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:45:41]   'stock_transito': navegadas 4 columnas a la derecha con teclado
+[01:45:54]   'stock_transito': no se encontró encabezado 'Precio', intentando por índice: Message: 
+Stacktrace:
+#0 0x56349777a29a <unknown>
+#1 0x56349715c449 <unknown>
+#2 0x5634971b0baf <unknown>
+#3 0x5634971b0e01 <unknown>
+#4 0x5634971fbae4 <unknown>
+#5 0x5634971f8cbf <unknown>
+#6 0x5634971a4132 <unknown>
+#7 0x5634971a4f41 <unknown>
+#8 0x563497740737 <unknown>
+#9 0x56349773ef39 <unknown>
+#10 0x563497729c26 <unknown>
+#11 0x56349773fada <unknown>
+#12 0x563497711bd0 <unknown>
+#13 0x563497766c28 <unknown>
+#14 0x563497766dc5 <unknown>
+#15 0x563497778e1e <unknown>
+#16 0x7f579ac9caa4 <unknown>
+#17 0x7f579ad29c6c <unknown>
+
+[01:45:56]   'stock_transito': navegadas 4 columnas a la derecha con teclado
+[01:45:58]   'stock_transito' -> 30 registro(s) únicos por Serial (30 con 6+ campos completos), tras 3 paso(s) verticales
+[01:45:58] Stock en tránsito: 30 registros
+[01:45:58] Guardado data/stock_sap.json (131 registros, status=listo)
