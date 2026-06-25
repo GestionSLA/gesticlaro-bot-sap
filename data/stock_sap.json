@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 99 registros",
-  "actualizado": "2026-06-25T19:27:32.272610+00:00",
-  "cantidad": 99,
+  "mensaje": "Sincronización completada: 96 registros",
+  "actualizado": "2026-06-25T23:10:37.534843+00:00",
+  "cantidad": 96,
   "data": [
     {
       "Material": "70010671",
@@ -202,32 +202,6 @@
     {
       "Material": "70013761",
       "Serial": "351493531742650",
-      "Texto": "MOT MTE1564GX2523 CZ",
-      "Centro": "N902",
-      "Precio": "166578.750",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70013761",
-      "Serial": "351493531742809",
-      "Texto": "MOT MTE1564GX2523 CZ",
-      "Centro": "N902",
-      "Precio": "166578.750",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70013761",
-      "Serial": "351493531795179",
       "Texto": "MOT MTE1564GX2523 CZ",
       "Centro": "N902",
       "Precio": "166578.750",
@@ -814,19 +788,6 @@
       "Material": "70015724",
       "Serial": "862712081025113",
       "Texto": "HOR X5CPLUS256GB NG",
-      "Centro": "N902",
-      "Precio": "253489.770",
-      "Dias_Antiguedad": "",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015725",
-      "Serial": "862712080900464",
-      "Texto": "HOR X5CPLUS256GB UI",
       "Centro": "N902",
       "Precio": "253489.770",
       "Dias_Antiguedad": "",
