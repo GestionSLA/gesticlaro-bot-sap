@@ -1,63 +1,65 @@
-[18:13:24] Abriendo portal SAP Fiori de Claro...
-[18:13:24] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
-[18:13:38] Paso 0: Verificando si requiere desplegar login corporativo...
-[18:13:39] Botón superior encontrado y presionado.
-[18:13:43] Paso 1: Escribiendo credenciales e ingresando...
-[18:13:43] Esperando que el campo j_username esté visible y clickeable...
-[18:13:43] Campo j_username listo. Esperando 2s adicionales de seguridad...
-[18:13:46] Inyectando usuario...
-[18:13:46]   -> j_username.value = 'AGED049128'
-[18:13:46] Inyectando contraseña...
-[18:13:46]   -> j_password.value longitud = 8
-[18:13:48] Presionando botón de ingreso 'Log On'...
-[18:13:51] Procesando login...
-[18:14:04] Navegando directo al módulo de stock por antigüedad (URL directa)...
-[18:14:04] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
-[18:14:26] Consultando Stock Disponible Principal...
-[18:15:07]   'stock_principal': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[18:15:08]   'stock_principal': scroll de página bajado al fondo para exponer hsb
-[18:15:08]   'stock_principal': métricas hsb (tableCCnt) = [0, 0, 1278]
-[18:15:08]   'stock_principal': scroll vertical max=3069px (paso~429px), horizontal max=0px (paso~1278px)
-[18:15:11]   'stock_principal': click en selall OK
-[18:15:13]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:15:19]   'stock_principal': click en selall OK
-[18:15:22]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:15:28]   'stock_principal': click en selall OK
-[18:15:31]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:15:36]   'stock_principal': click en selall OK
-[18:15:39]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:15:45]   'stock_principal': click en selall OK
-[18:15:48]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:15:54]   'stock_principal': click en selall OK
-[18:15:56]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:16:02]   'stock_principal': click en selall OK
-[18:16:05]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:16:11]   'stock_principal': click en selall OK
-[18:16:14]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:16:19]   'stock_principal': click en selall OK
-[18:16:22]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
-[18:16:25]   'stock_principal' -> 104 registro(s) únicos por Serial (104 con 6+ campos completos), tras 9 paso(s) verticales
-[18:16:25] Stock principal: 104 registros
-[18:16:25] Consultando Depósito de Reingreso...
-[18:17:10]   'deposito_reingreso': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[18:17:11]   'deposito_reingreso': scroll de página bajado al fondo para exponer hsb
-[18:17:11]   'deposito_reingreso': métricas hsb (tableCCnt) = [0, 0, 1278]
-[18:17:11]   'deposito_reingreso': scroll vertical max=0px (paso~300px), horizontal max=0px (paso~1278px)
-[18:17:14]   'deposito_reingreso': click en selall OK
-[18:17:16]   'deposito_reingreso': navegadas columnas ocultas con Tab+End+→→→→
-[18:17:20]   'deposito_reingreso' -> 0 registro(s) únicos por Serial (0 con 6+ campos completos), tras 1 paso(s) verticales
-[18:17:20] Stock total acumulado: 104 registros
-[18:17:20] Consultando Stock en Tránsito...
-[18:18:04]   'stock_transito': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
-[18:18:05]   'stock_transito': scroll de página bajado al fondo para exponer hsb
-[18:18:05]   'stock_transito': métricas hsb (tableCCnt) = [0, 0, 1278]
-[18:18:05]   'stock_transito': scroll vertical max=660px (paso~429px), horizontal max=0px (paso~1278px)
-[18:18:08]   'stock_transito': click en selall OK
-[18:18:11]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
-[18:18:16]   'stock_transito': click en selall OK
-[18:18:19]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
-[18:18:25]   'stock_transito': click en selall OK
-[18:18:28]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
-[18:18:31]   'stock_transito' -> 0 registro(s) únicos por Serial (0 con 6+ campos completos), tras 3 paso(s) verticales
-[18:18:31] Stock en tránsito: 0 registros
-[18:18:31] Guardado data/stock_sap.json (104 registros, status=listo)
+[23:48:14] Abriendo portal SAP Fiori de Claro...
+[23:48:14] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#home-Display (intento 1/2, timeout=180s)...
+[23:48:29] Paso 0: Verificando si requiere desplegar login corporativo...
+[23:48:29] Botón superior encontrado y presionado.
+[23:48:33] Paso 1: Escribiendo credenciales e ingresando...
+[23:48:33] Esperando que el campo j_username esté visible y clickeable...
+[23:48:33] Campo j_username listo. Esperando 2s adicionales de seguridad...
+[23:48:36] Inyectando usuario...
+[23:48:36]   -> j_username.value = 'AGED049128'
+[23:48:36] Inyectando contraseña...
+[23:48:36]   -> j_password.value longitud = 8
+[23:48:38] Presionando botón de ingreso 'Log On'...
+[23:48:41] Procesando login...
+[23:48:54] Navegando directo al módulo de stock por antigüedad (URL directa)...
+[23:48:54] Cargando https://flpnwc-d62f4ebf3.dispatcher.us2.hana.ondemand.com/sites/agentes#stock_antiguedad-Display (intento 1/2, timeout=180s)...
+[23:49:17] Consultando Stock Disponible Principal...
+[23:49:57]   'stock_principal': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[23:49:58]   'stock_principal': scroll de página bajado al fondo para exponer hsb
+[23:49:58]   'stock_principal': métricas hsb (tableCCnt) = [0, 0, 1278]
+[23:49:58]   'stock_principal': scroll vertical max=2871px (paso~429px), horizontal max=0px (paso~1278px)
+[23:50:01]   'stock_principal': click en selall OK
+[23:50:04]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:10]   'stock_principal': click en selall OK
+[23:50:12]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:18]   'stock_principal': click en selall OK
+[23:50:21]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:27]   'stock_principal': click en selall OK
+[23:50:29]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:35]   'stock_principal': click en selall OK
+[23:50:38]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:44]   'stock_principal': click en selall OK
+[23:50:47]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:50:52]   'stock_principal': click en selall OK
+[23:50:55]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:51:01]   'stock_principal': click en selall OK
+[23:51:04]   'stock_principal': navegadas columnas ocultas con Tab+End+→→→→
+[23:51:07]   'stock_principal' -> 100 registro(s) únicos por Serial (100 con 6+ campos completos), tras 8 paso(s) verticales
+[23:51:07] Stock principal: 100 registros
+[23:51:07] Consultando Depósito de Reingreso...
+[23:51:52]   'deposito_reingreso': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[23:51:53]   'deposito_reingreso': scroll de página bajado al fondo para exponer hsb
+[23:51:53]   'deposito_reingreso': métricas hsb (tableCCnt) = [0, 0, 1278]
+[23:51:53]   'deposito_reingreso': scroll vertical max=0px (paso~300px), horizontal max=0px (paso~1278px)
+[23:51:55]   'deposito_reingreso': click en selall OK
+[23:51:58]   'deposito_reingreso': navegadas columnas ocultas con Tab+End+→→→→
+[23:52:01]   'deposito_reingreso' -> 0 registro(s) únicos por Serial (0 con 6+ campos completos), tras 1 paso(s) verticales
+[23:52:01] Stock total acumulado: 100 registros
+[23:52:01] Consultando Stock en Tránsito...
+[23:52:46]   'stock_transito': timeout esperando datos (40s), última lectura: 1 fila(s) en el DOM
+[23:52:47]   'stock_transito': scroll de página bajado al fondo para exponer hsb
+[23:52:47]   'stock_transito': métricas hsb (tableCCnt) = [0, 0, 1278]
+[23:52:47]   'stock_transito': scroll vertical max=1419px (paso~429px), horizontal max=0px (paso~1278px)
+[23:52:49]   'stock_transito': click en selall OK
+[23:52:52]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
+[23:52:58]   'stock_transito': click en selall OK
+[23:53:01]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
+[23:53:06]   'stock_transito': click en selall OK
+[23:53:09]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
+[23:53:15]   'stock_transito': click en selall OK
+[23:53:18]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
+[23:53:24]   'stock_transito': click en selall OK
+[23:53:27]   'stock_transito': navegadas columnas ocultas con Tab+End+→→→→
+[23:53:30]   'stock_transito' -> 0 registro(s) únicos por Serial (0 con 6+ campos completos), tras 5 paso(s) verticales
+[23:53:30] Stock en tránsito: 0 registros
+[23:53:30] Guardado data/stock_sap.json (100 registros, status=listo)
