@@ -258,36 +258,97 @@ def leer_filas_visibles(driver, nombre_consulta):
     return parciales
 
 
-def navegar_columnas_teclado(driver, nombre_consulta):
+def leer_columnas_ocultas(driver, nombre_consulta):
     """
-    Click en la scrollbar horizontal (hsb) y mantiene presionada la
-    tecla direccional derecha por 3 segundos para forzar que SAP UI5
-    renderice las columnas ocultas (Dias_Antiguedad, Semaforo,
-    Fecha_Antiguedad, Nro_Pedido) en el DOM.
+    Lee las 4 columnas ocultas directamente por XPath de celda.
+    Las columnas tienen IDs fijos: col10=Dias, col12=Fecha, col13=NroPedido.
+    Devuelve dict {serial: {Dias_Antiguedad, Fecha_Antiguedad, Nro_Pedido}}
+    Si no encuentra col9 (Precio), la fila no existe y se omite.
+    El ID del view puede ser __xmlview3 o __xmlview4 segun el contexto.
     """
-    try:
-        hsb = WebDriverWait(driver, 8).until(
-            EC.presence_of_element_located((By.ID, "__xmlview4--TabReport-hsb"))
-        )
-        driver.execute_script("arguments[0].click();", hsb)
-        time.sleep(0.4)
-        log(f"  '{nombre_consulta}': click en hsb OK")
-    except Exception as e:
-        log(f"  '{nombre_consulta}': no se encontro hsb: {e}")
-        return
+    resultado = {}
 
+    # Detectar prefijo del view (puede variar entre __xmlview3 y __xmlview4)
+    prefijo = None
+    for px in ["__xmlview3--TabReport", "__xmlview4--TabReport"]:
+        el = driver.execute_script(
+            f"return document.getElementById('{px}-rows-row0-col9');"
+        )
+        if el:
+            prefijo = px
+            break
+
+    if not prefijo:
+        log(f"  '{nombre_consulta}': no se encontro col9 (tabla vacia o prefijo desconocido)")
+        return resultado
+
+    log(f"  '{nombre_consulta}': prefijo detectado = {prefijo}")
+
+    # Hacer click en col9 (Precio) y presionar END para exponer columnas ocultas
     try:
+        col9 = driver.find_element(By.ID, f"{prefijo}-rows-row0-col9")
+        driver.execute_script("arguments[0].click();", col9)
+        time.sleep(0.3)
         from selenium.webdriver.common.action_chains import ActionChains
-        # Mantener presionada la tecla → por 3 segundos
-        actions = ActionChains(driver)
-        actions.key_down(Keys.ARROW_RIGHT)
-        actions.pause(3.0)
-        actions.key_up(Keys.ARROW_RIGHT)
-        actions.perform()
+        ActionChains(driver).send_keys(Keys.END).perform()
         time.sleep(0.8)
-        log(f"  '{nombre_consulta}': tecla → mantenida 3s, columnas ocultas expuestas")
+        log(f"  '{nombre_consulta}': click col9 + END ejecutado")
     except Exception as e:
-        log(f"  '{nombre_consulta}': error manteniendo tecla: {e}")
+        log(f"  '{nombre_consulta}': error en click col9 + END: {e}")
+        return resultado
+
+    # Leer fila por fila usando los XPaths de col10, col12, col13
+    # y el serial de col1 para identificar la fila
+    fila = 0
+    while True:
+        try:
+            # Serial esta en col1
+            el_serial = driver.execute_script(
+                f"return document.getElementById('{prefijo}-rows-row{fila}-col1');"
+            )
+            if not el_serial:
+                break  # no hay mas filas visibles
+
+            serial = (el_serial.get_attribute("textContent") or "").strip()
+            if not serial or len(serial) < 5:
+                fila += 1
+                continue
+
+            dias = ""
+            fecha = ""
+            nro_pedido = ""
+
+            el_dias = driver.execute_script(
+                f"return document.getElementById('{prefijo}-rows-row{fila}-col10');"
+            )
+            if el_dias:
+                dias = (el_dias.get_attribute("textContent") or "").strip()
+
+            el_fecha = driver.execute_script(
+                f"return document.getElementById('{prefijo}-rows-row{fila}-col12');"
+            )
+            if el_fecha:
+                fecha = (el_fecha.get_attribute("textContent") or "").strip()
+
+            el_pedido = driver.execute_script(
+                f"return document.getElementById('{prefijo}-rows-row{fila}-col13');"
+            )
+            if el_pedido:
+                nro_pedido = (el_pedido.get_attribute("textContent") or "").strip()
+
+            resultado[serial] = {
+                "Dias_Antiguedad": dias,
+                "Fecha_Antiguedad": fecha,
+                "Nro_Pedido": nro_pedido,
+            }
+            fila += 1
+
+        except Exception as e:
+            log(f"  '{nombre_consulta}': error leyendo fila {fila}: {e}")
+            break
+
+    log(f"  '{nombre_consulta}': columnas ocultas leidas para {len(resultado)} seriales")
+    return resultado
 
 
 def scroll_vertical(driver, posicion):
@@ -440,36 +501,20 @@ def extraer_datos_tabla(driver, nombre_consulta="consulta", max_pasos_v=60, max_
         scroll_vertical(driver, pos_v)
         time.sleep(0.6)
 
-        # Lectura 1: columnas izquierdas visibles (posición natural)
+        # Lectura 1: columnas izquierdas visibles (Material, Serial, Texto,
+        # Centro, Almacen, Movimiento, Mov_texto, Modelo, Origen, Precio)
         for reg in leer_filas_visibles(driver, nombre_consulta):
             serial = reg.get("Serial")
             if not serial:
                 continue
             filas_por_serial.setdefault(serial, {}).update(reg)
 
-        # Lectura 2: columnas derechas ocultas — navegamos con teclado
-        # 4 posiciones a la derecha para que SAP renderice Días Antigüedad,
-        # Semáforo, Fecha Antigüedad y Nro. Pedido en el DOM.
-        navegar_columnas_teclado(driver, nombre_consulta)
-        time.sleep(0.8)  # esperar que SAP termine de renderizar las nuevas columnas
-        for reg in leer_filas_visibles(driver, nombre_consulta):
-            serial = reg.get("Serial")
-            if not serial:
-                continue
-            filas_por_serial.setdefault(serial, {}).update(reg)
-
-        # Volver a la posición original (4 flechas izquierda) antes de
-        # seguir con el scroll vertical.
-        try:
-            from selenium.webdriver.common.action_chains import ActionChains
-            actions = ActionChains(driver)
-            for _ in range(4):
-                actions.send_keys(Keys.ARROW_LEFT)
-                actions.pause(0.2)
-            actions.perform()
-            time.sleep(0.3)
-        except Exception:
-            pass
+        # Lectura 2: columnas ocultas (Dias_Antiguedad col10, Fecha_Antiguedad
+        # col12, Nro_Pedido col13) leídas directamente por ID de celda.
+        # No necesita scroll — lee el DOM directamente por XPath de celda.
+        ocultas = leer_columnas_ocultas(driver, nombre_consulta)
+        for serial, datos in ocultas.items():
+            filas_por_serial.setdefault(serial, {}).update(datos)
 
         if pos_v >= scroll_max_v or paso_count_v >= max_pasos_v:
             break
