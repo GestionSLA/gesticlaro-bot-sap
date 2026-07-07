@@ -1,7 +1,7 @@
 {
   "status": "error",
-  "mensaje": "Message: \nStacktrace:\n#0 0x56166ea633da <unknown>\n#1 0x56166e445139 <unknown>\n#2 0x56166e499884 <unknown>\n#3 0x56166e499ad1 <unknown>\n#4 0x56166e4e4974 <unknown>\n#5 0x56166e4e1b5c <unknown>\n#6 0x56166e48ce4f <unknown>\n#7 0x56166e48dc31 <unknown>\n#8 0x56166ea299f7 <unknown>\n#9 0x56166ea28203 <unknown>\n#10 0x56166ea12f16 <unknown>\n#11 0x56166ea28d9a <unknown>\n#12 0x56166e9faeb0 <unknown>\n#13 0x56166ea4fd58 <unknown>\n#14 0x56166ea4fef5 <unknown>\n#15 0x56166ea61f5e <unknown>\n#16 0x7fa595a9caa4 <unknown>\n#17 0x7fa595b29c6c <unknown>\n",
-  "actualizado": "2026-07-07T14:42:59.887206+00:00",
+  "mensaje": "name 'TimeoutException' is not defined",
+  "actualizado": "2026-07-07T18:05:09.342183+00:00",
   "cantidad": 0,
   "data": []
 }
