@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 164 registros",
-  "actualizado": "2026-07-16T17:24:21.330967+00:00",
-  "cantidad": 164,
+  "mensaje": "Sincronización completada: 163 registros",
+  "actualizado": "2026-07-16T21:06:45.713509+00:00",
+  "cantidad": 163,
   "data": [
     {
       "Material": "70010671",
@@ -1346,19 +1346,6 @@
     {
       "Material": "70016453",
       "Serial": "350296481222610",
-      "Texto": "MOT MTG77256G21-3 NG T",
-      "Centro": "N902",
-      "Precio": "566716.570",
-      "Dias_Antiguedad": "0",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "16.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016453",
-      "Serial": "350296481222636",
       "Texto": "MOT MTG77256G21-3 NG T",
       "Centro": "N902",
       "Precio": "566716.570",
