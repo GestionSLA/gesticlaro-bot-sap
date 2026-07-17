@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 163 registros",
-  "actualizado": "2026-07-16T21:06:45.713509+00:00",
-  "cantidad": 163,
+  "mensaje": "Sincronización completada: 162 registros",
+  "actualizado": "2026-07-17T02:53:24.293930+00:00",
+  "cantidad": 162,
   "data": [
     {
       "Material": "70010671",
@@ -553,19 +553,6 @@
     {
       "Material": "70015354",
       "Serial": "356841323805090",
-      "Texto": "SMG GXA16128/4165 NG T",
-      "Centro": "N902",
-      "Precio": "322713.260",
-      "Dias_Antiguedad": "0",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "16.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015354",
-      "Serial": "356841323805108",
       "Texto": "SMG GXA16128/4165 NG T",
       "Centro": "N902",
       "Precio": "322713.260",
