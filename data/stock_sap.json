@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 144 registros",
-  "actualizado": "2026-07-18T17:04:09.073707+00:00",
-  "cantidad": 144,
+  "mensaje": "Sincronización completada: 143 registros",
+  "actualizado": "2026-07-18T20:56:39.980052+00:00",
+  "cantidad": 143,
   "data": [
     {
       "Material": "70010671",
@@ -1209,19 +1209,6 @@
       "Dias_Antiguedad": "2",
       "Semaforo": "",
       "Fecha_Antiguedad": "16.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016454",
-      "Serial": "350296481047132",
-      "Texto": "MOT MTG77256G21-3 VR T",
-      "Centro": "N902",
-      "Precio": "566716.570",
-      "Dias_Antiguedad": "3",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "15.7.2026",
       "Nro_Pedido": "",
       "Categoria": "Stock actual",
       "Origen": "principal"
