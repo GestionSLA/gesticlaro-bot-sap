@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 141 registros",
-  "actualizado": "2026-07-23T17:29:33.424171+00:00",
-  "cantidad": 141,
+  "mensaje": "Sincronización completada: 137 registros",
+  "actualizado": "2026-07-23T21:10:54.036082+00:00",
+  "cantidad": 137,
   "data": [
     {
       "Material": "70010671",
@@ -254,19 +254,6 @@
     {
       "Material": "70013941",
       "Serial": "866865051192556",
-      "Texto": "HUA B535-636 BL",
-      "Centro": "N902",
-      "Precio": "63529.410",
-      "Dias_Antiguedad": "346",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "11.8.2025",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70013941",
-      "Serial": "866865051199502",
       "Texto": "HUA B535-636 BL",
       "Centro": "N902",
       "Precio": "63529.410",
@@ -773,19 +760,6 @@
     },
     {
       "Material": "70015725",
-      "Serial": "862712080962316",
-      "Texto": "HOR X5CPLUS256GB UI",
-      "Centro": "N902",
-      "Precio": "253489.770",
-      "Dias_Antiguedad": "50",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "3.6.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70015725",
       "Serial": "862712081002146",
       "Texto": "HOR X5CPLUS256GB UI",
       "Centro": "N902",
@@ -832,19 +806,6 @@
       "Dias_Antiguedad": "7",
       "Semaforo": "",
       "Fecha_Antiguedad": "16.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016044",
-      "Serial": "355973761782852",
-      "Texto": "MOT MG0664GXT35-2 AZ T",
-      "Centro": "N902",
-      "Precio": "204647.150",
-      "Dias_Antiguedad": "21",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "2.7.2026",
       "Nro_Pedido": "",
       "Categoria": "Stock actual",
       "Origen": "principal"
@@ -923,19 +884,6 @@
       "Dias_Antiguedad": "7",
       "Semaforo": "",
       "Fecha_Antiguedad": "16.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016046",
-      "Serial": "355973762295854",
-      "Texto": "MOT MG06128GXT253 AZ T",
-      "Centro": "N902",
-      "Precio": "244002.520",
-      "Dias_Antiguedad": "1",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "22.7.2026",
       "Nro_Pedido": "",
       "Categoria": "Stock actual",
       "Origen": "principal"
