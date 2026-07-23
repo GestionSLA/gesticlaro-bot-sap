@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 143 registros",
-  "actualizado": "2026-07-23T14:10:15.962353+00:00",
-  "cantidad": 143,
+  "mensaje": "Sincronización completada: 141 registros",
+  "actualizado": "2026-07-23T17:29:33.424171+00:00",
+  "cantidad": 141,
   "data": [
     {
       "Material": "70010671",
@@ -1046,19 +1046,6 @@
     },
     {
       "Material": "70016275",
-      "Serial": "352187610836610",
-      "Texto": "MOT MTG17256G23-1 CE T",
-      "Centro": "N902",
-      "Precio": "322713.260",
-      "Dias_Antiguedad": "17",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "6.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016275",
       "Serial": "352187610838103",
       "Texto": "MOT MTG17256G23-1 CE T",
       "Centro": "N902",
@@ -1762,19 +1749,6 @@
     {
       "Material": "70017062",
       "Serial": "357529751117190",
-      "Texto": "MOT MOTOGMAX256GB NG T",
-      "Centro": "N902",
-      "Precio": "629685.160",
-      "Dias_Antiguedad": "1",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "22.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70017062",
-      "Serial": "357529751117299",
       "Texto": "MOT MOTOGMAX256GB NG T",
       "Centro": "N902",
       "Precio": "629685.160",
