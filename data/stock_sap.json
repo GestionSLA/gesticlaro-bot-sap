@@ -1,8 +1,8 @@
 {
   "status": "listo",
-  "mensaje": "Sincronización completada: 132 registros",
-  "actualizado": "2026-07-24T13:53:09.467017+00:00",
-  "cantidad": 132,
+  "mensaje": "Sincronización completada: 130 registros",
+  "actualizado": "2026-07-24T15:12:08.520736+00:00",
+  "cantidad": 130,
   "data": [
     {
       "Material": "70010671",
@@ -59,19 +59,6 @@
     {
       "Material": "70013760",
       "Serial": "352266232754110",
-      "Texto": "MOT MTE1564GX2523 MR",
-      "Centro": "N902",
-      "Precio": "166578.750",
-      "Dias_Antiguedad": "22",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "2.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70013760",
-      "Serial": "352266232754755",
       "Texto": "MOT MTE1564GX2523 MR",
       "Centro": "N902",
       "Precio": "166578.750",
@@ -1047,19 +1034,6 @@
     {
       "Material": "70016275",
       "Serial": "352187612129634",
-      "Texto": "MOT MTG17256G23-1 CE T",
-      "Centro": "N902",
-      "Precio": "322713.260",
-      "Dias_Antiguedad": "2",
-      "Semaforo": "",
-      "Fecha_Antiguedad": "22.7.2026",
-      "Nro_Pedido": "",
-      "Categoria": "Stock actual",
-      "Origen": "principal"
-    },
-    {
-      "Material": "70016275",
-      "Serial": "352187612129782",
       "Texto": "MOT MTG17256G23-1 CE T",
       "Centro": "N902",
       "Precio": "322713.260",
